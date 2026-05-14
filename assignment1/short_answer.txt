@@ -3,20 +3,23 @@ Assignment 1: Marriage Pact — short answers
 
 Q1. reserve vs resize — and the capacity you chose in get_applicants.
     YOUR ANSWER:
-
+    reserve pre allocates space by increasing capacity, whereas resize changes the size, not just the capacity, since it creates default constructor elements.
+    I chose 1024 as the capacity since its a power of 2(default doubling technique as it happens in automatic resizing the underlying array in std vectors) and since its mentioned that there are thousands of students.
 
 Q2. What does it mean for a std::ranges algorithm to take a projection?
     Give one example from your find_matches (or explain why a projection
     didn't help).
     YOUR ANSWER:
-
+    By taking projections, we are isolating the logic part from the underlying data structure used. Like in find_matches, i used a projection of initials to get the initials from name, allowing me to use a simple check lambda function, which just checks whether the parameter is same as the target.
 
 Q3. Iterator invalidation in run_mixer. Which strategy did you choose
     (erase-returns-next-iterator / indices / restart) and why?
     What specifically goes wrong with the naive approach?
     YOUR ANSWER:
+    I used erase-returns-next-iterator since it fixes the exact problem which happens in the naive approach, it gives us the exact pointer to the element just next to that being erased. Erasing a further element is by design not going to affect the current pointer, say we deleted 2 elements we would have expected the initial pointer to be pointing to the next element by incrementing it but actually under the hood to maintain contiguous memory vector shifts all data leftwards to fill in the break caused by deleting, and the pointer to erased element is dangling, thus can have undefined behaviour.
 
 
 Q4. at() vs []. When, if ever, would you reach for vec.at(i) over
     vec[i] in this assignment?
     YOUR ANSWER:
+    Not used in this assignment, but at() is preferred over [] indexing when we are unsure whether any element exists at that position, since [] will just output some garbage value, but at() with throw an exception which we can catch.
