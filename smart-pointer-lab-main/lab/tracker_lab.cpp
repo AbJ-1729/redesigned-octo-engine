@@ -50,6 +50,9 @@ public:
 
     Tracker(const Tracker& other) = delete;
     Tracker& operator=(const Tracker& other) = delete;
+    ~Tracker() {
+        std::cerr << id_ << " destroyed" << std::endl;
+    }//since default destructors of members are called automatically, we don't need to explicitly delete data_ here. unique_ptr will handle it for us.
 
     //move constructor
     Tracker(Tracker&& other): data_(std::move(other.data_)), id_(other.id_) {
