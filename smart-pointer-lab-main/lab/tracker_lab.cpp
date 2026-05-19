@@ -75,6 +75,10 @@ public:
     T& get() {
         return *data_; //assuming not nullptr
     }
+
+    const T& get() const {
+        return *data_; //assuming not nullptr
+    }
 };
 
 // ─── Stage 1 main ─────────────────────────────────────────────────────────────
