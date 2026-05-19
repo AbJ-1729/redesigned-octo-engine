@@ -73,7 +73,7 @@ public:
     // implement getters
     // (do you need multiple? think about const correctness)
     T& get() {
-        return *data_;
+        return *data_; //assuming not nullptr
     }
 };
 
