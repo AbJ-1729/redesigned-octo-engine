@@ -40,36 +40,30 @@ template <typename T>
 class Tracker {
 public:
     int id_;
-    T*  data_;  // owning raw pointer — YOU are responsible for deleting this
+    std::unique_ptr<T> data_; 
 
     // in : initialiser list, order is not based on sequence of writing but instead on the order of declaration in the class. So id_ is initialised before data_.
-    explicit Tracker(T value): data_(new T(value)), id_(next_id()) {
-        // id_ = next_id();
-        // data_ = new T(value);
+    explicit Tracker(T value): data_(std::make_unique<T>(value)), id_(next_id()) {
         if(not data_) throw std::bad_alloc();
         std::cerr << id_ << " born" << std::endl;
     }
 
-    ~Tracker() {
-        if(data_) delete data_;
-        std::cerr << id_ << " destroyed" << std::endl;
-    }
+    Tracker(const Tracker& other) = delete;
+    Tracker& operator=(const Tracker& other) = delete;
 
-    Tracker(const Tracker& other) : id_(next_id()), data_(other.data_ ? new T(*other.data_) : nullptr) {
-        std::cerr << id_ << " copied from " << other.id_ << std::endl;
+    //move constructor
+    Tracker(Tracker&& other): data_(std::move(other.data_)), id_(other.id_) {
+        std::cerr << id_ << " moved from " << other.id_ << std::endl;
     }
-
-    Tracker& operator=(const Tracker& other) {
-        if (this == &other) {
-            return *this;
+    //move assignment
+    Tracker& operator=(Tracker&& other) {
+        if(this != &other) {
+            data_ = std::move(other.data_);
+            id_ = other.id_;
+            std::cerr << id_ << " moved from " << other.id_ << std::endl;
         }
-        delete data_;
-        if(not other.data_) data_ = nullptr;
-        else data_ = new T(*other.data_);
-        std::cerr << id_ << " assigned from " << other.id_ << std::endl;
         return *this;
     }
-
     // implement getters
     // (do you need multiple? think about const correctness)
     T& get() {
@@ -83,7 +77,7 @@ public:
 
 // ─── Stage 1 main ─────────────────────────────────────────────────────────────
 // Uncomment this block for Stage 1. Comment it out before Stage 2.
-
+/*
 int main() {
     std::cerr << "=== Stage 1: raw pointer Tracker ===\n";
 
@@ -117,7 +111,7 @@ int main() {
 
     return 0;
 }
-
+*/
 
 // =============================================================================
 // STAGE 2 — Refactor to use std::unique_ptr<T> as the member.
@@ -135,7 +129,7 @@ int main() {
 // =============================================================================
 
 // ─── Stage 2 main ─────────────────────────────────────────────────────────────
-/*
+
 int main() {
     std::cerr << "=== Stage 2: unique_ptr Tracker ===\n";
 
@@ -166,7 +160,7 @@ int main() {
 
     return 0;
 }
-*/
+
 
 // =============================================================================
 // STAGE 3 — Shared ownership with std::shared_ptr<T>.
