@@ -189,10 +189,17 @@ public:
     void add(std::shared_ptr<Tracker<int>> t) {
         // TODO: push_back t, then log name_ + " now holds tracker " + id
         //       and print t.use_count()
+        holdings_.push_back(std::move(t)); 
+        std::cerr << name_ << " now holds tracker " << holdings_.back()->id_ << " with use_count=" << holdings_.back().use_count() << std::endl;
     }
 
     void print() const {
         // TODO: implement print out for each holding in the portfolio
+        std::cout << name_ << " holds trackers: ";
+        for(const auto& t : holdings_) {
+            std::cout << t->id_ << " (use_count=" << t.use_count() << ") "<< "; ";
+        }
+        std::cout << std::endl;
     }
 };
 
