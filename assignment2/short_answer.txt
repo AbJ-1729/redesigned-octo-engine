@@ -1,26 +1,24 @@
-Before submitting this file, make sure that there are no more TODO
-placeholders remaining in the file (and remove this comment too).
-
 Unique Pointer
 --------------
 
 Q1. List one or two benefits of using RAII to manage memory instead manually calling `new` and `delete`.
-A1. TODO
+A1. eliminates human errors like double frees
 
 Q2. When implementing move semantics for a `unique_ptr`, for example in the move constructor `unique_ptr(unique_ptr&& other)`, it is essential that we set the underlying pointer of the `other` parameter to `nullptr` before exiting the function. Explain in your own words what problem would arise if we did not.
-A2. TODO
+A2. if we don,t then the other unique_ptr still points to the same memory location, which is fundamentally wrong for moving, it is just copying then. also this can lead to double free error.
 
-Q3. This method of recursive deallocation through RAII works great for small lists, but may pose a problem for longer lists. Why? Hint: what is the limit for how "deep" a recursive function's call stack can grow?
-A3. TODO
+Q3. This method of recursive deallocation through RAII works great for small lists, but may pose a problem for longer lists. Why? Hint: what is the limit for how "deep" a recursive function's call stack can grow?o
+A3. For a very long list it might excceed the recursion limit leading to stack overflow
 
 Q4. What does `std::move` do in this context? Why is it safe to use `std::move` and move semantics here?
-A4. TODO
+A4. It just creates an rvalue cast of an lvalue
 
 Q5. Why does `operator->` return `T*` (a pointer) rather than `T&` (a reference)? Walk through what the compiler does when it sees `ptr->member`.
-A5. TODO
+A5. on seeing ptr->member it applies operator-> function on ptr and on receiving a raw pointer, it accesses member using builtin -> function, thus passing a reference would fail the syntax requirement
 
 Q6. Why does this class need BOTH `T& operator*()` and `const T& operator*() const`? Give a one-line code example that would fail to compile if one of them were missing, and explain which one.
-A6. TODO
+A6. if const T& operator*() const is missing, then we won't be able to dereference a const unique_ptr object, e.g. void printValue(const unique_ptr<int>& ptr) { std::cout << *ptr;} , this function would fail.
+if T& operator*() is missing, then we won't be able to modify the value of a unique_ptr object, e.g. unique_ptr<int> ptr = make_unique<int>(5); *ptr=10; , this  would fail.
 
 Q7. We marked `operator bool()` as `explicit`. What kind of unintended code would compile if we had left the `explicit` off? Give a concrete example.
-A7. TODO
+A7. unique_ptr<int> ptr = make_unique<int>(5); int y=5,z; y=ptr+y; //this would execute with ptr bool being cast to int(1) since true, this y becomes 6

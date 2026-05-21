@@ -12,7 +12,6 @@ namespace cs106l {
  */
 template <typename T> class unique_ptr {
 private:
-  /* STUDENT TODO: What data must a unique_ptr keep track of? */
   T* ptr;
 public:
   /**
@@ -21,7 +20,6 @@ public:
    * @note You should avoid using this constructor directly and instead use `make_unique()`.
    */
   unique_ptr(T* ptr) {
-    /* STUDENT TODO: Implement the constructor */
     this->ptr = ptr;
   }
 
@@ -29,7 +27,6 @@ public:
    * @brief Constructs a new `unique_ptr` from `nullptr`.
    */
   unique_ptr(std::nullptr_t) {
-    /* STUDENT TODO: Implement the nullptr constructor */
     this->ptr = nullptr;
   }
 
@@ -44,8 +41,7 @@ public:
    * @return A reference to the object.
    */
   T& operator*() {
-    /* STUDENT TODO: Implement the dereference operator */
-    return *this->ptr;
+    return *this->ptr; // assuming not nullptr, otherwise undefined behavior
   }
 
   /**
@@ -53,8 +49,7 @@ public:
    * @return A const reference to the object.
    */
   const T& operator*() const {
-    /* STUDENT TODO: Implement the dereference operator (const) */
-    return *this->ptr;
+    return *this->ptr; // assuming not nullptr, otherwise undefined behavior
   }
 
   /**
@@ -63,7 +58,6 @@ public:
    * @return A pointer to the object.
    */
   T* operator->() {
-    /* STUDENT TODO: Implement the arrow operator */
     return this->ptr;
   }
 
@@ -73,7 +67,6 @@ public:
    * @return A const pointer to the object.
    */
   const T* operator->() const {
-    /* STUDENT TODO: Implement the arrow operator */
     return this->ptr;
   }
 
@@ -85,17 +78,9 @@ public:
    * @return `true` if the `unique_ptr` is non-null, `false` otherwise.
    */
   explicit operator bool() const {
-    /* STUDENT TODO: Implement the boolean conversion operator */
     return this->ptr != nullptr;
   }
 
-  /** STUDENT TODO: In the space below, do the following:
-   * - Implement a destructor
-   * - Delete the copy constructor
-   * - Delete the copy assignment operator
-   * - Implement the move constructor
-   * - Implement the move assignment operator
-   */
 
   ~unique_ptr() {
     delete this->ptr;
@@ -118,28 +103,10 @@ public:
     return *this;
   }
 
-  /* STUDENT TODO (Part 3): Implement equality comparisons.
-   *
-   * Add two friend operators here so that the following compile
-   * and behave correctly:
-   *
-   *   unique_ptr<int> a = make_unique<int>(1);
-   *   unique_ptr<int> b = make_unique<int>(2);
-   *   bool x = (a == b);        // compare two unique_ptrs
-   *   bool y = (a == nullptr);  // compare against nullptr
-   *   bool z = (nullptr == a);  // and the reverse
-   *
-   * Two `unique_ptr`s compare equal iff they hold the same raw
-   * pointer (which, given uniqueness, only happens when both are
-   * null).
-   *
-   * Hint: declare them as `friend` inside this class so they can
-   * see the private pointer, and define them inline here.
-   */
-
   friend bool operator==(const unique_ptr& lhs, const unique_ptr& rhs) {
     return lhs.ptr == rhs.ptr;
   }
+  //even just one works since friend and implicit conversion of nullptr_t to unique_ptr
 };
 
 /**

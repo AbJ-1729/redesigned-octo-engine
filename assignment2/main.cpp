@@ -52,7 +52,6 @@ template <typename T> struct ListNode {
  * @return A `unique_ptr` to the head of the list.
  */
 template <typename T> cs106l::unique_ptr<ListNode<T>> create_list(const std::vector<T>& values) {
-  /* STUDENT TODO: Implement this method */
   cs106l::unique_ptr<ListNode<T>> head = nullptr;
   cs106l::unique_ptr<ListNode<T>> node = nullptr;
   int x = values.size();
