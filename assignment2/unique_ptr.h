@@ -104,12 +104,12 @@ public:
   unique_ptr(const unique_ptr&) = delete;
   unique_ptr& operator=(const unique_ptr&) = delete;
 
-  unique_ptr(unique_ptr&& other) {
+  unique_ptr(unique_ptr&& other) noexcept {
     this->ptr = other.ptr;
     other.ptr = nullptr;
   }
 
-  unique_ptr& operator=(unique_ptr&& other){
+  unique_ptr& operator=(unique_ptr&& other) noexcept {
     if (this != &other) {
       delete this->ptr;
       this->ptr = other.ptr;
@@ -136,6 +136,10 @@ public:
    * Hint: declare them as `friend` inside this class so they can
    * see the private pointer, and define them inline here.
    */
+
+  friend bool operator==(const unique_ptr& lhs, const unique_ptr& rhs) {
+    return lhs.ptr == rhs.ptr;
+  }
 };
 
 /**
