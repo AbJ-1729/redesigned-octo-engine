@@ -42,8 +42,9 @@ public:
     int id_;
     std::unique_ptr<T> data_; 
 
-    // in : initialiser list, order is not based on sequence of writing but instead on the order of declaration in the class. So id_ is initialised before data_.
-    explicit Tracker(T value): data_(std::make_unique<T>(value)), id_(next_id()) {
+    // in : initialiser list, order is not based on sequence of writing but instead on the order of declaration in the class. So id_ is initialised before data_. even in // portion
+    // explicit Tracker(T value): data_(std::make_unique<T>(value)), id_(next_id()) {
+    explicit Tracker(T value): id_(next_id()), data_(std::make_unique<T>(value)) {
         if(not data_) throw std::bad_alloc();
         std::cerr << id_ << " born" << std::endl;
     }
@@ -133,6 +134,7 @@ int main() {
 
 // ─── Stage 2 main ─────────────────────────────────────────────────────────────
 
+/*
 int main() {
     std::cerr << "=== Stage 2: unique_ptr Tracker ===\n";
 
@@ -163,7 +165,7 @@ int main() {
 
     return 0;
 }
-
+*/
 
 // =============================================================================
 // STAGE 3 — Shared ownership with std::shared_ptr<T>.
@@ -206,11 +208,14 @@ public:
 std::shared_ptr<Tracker<int>> make_tracker(int value) {
     // TODO: produce a shared pointer
     // Q1: Why make a make_tracker function?
+    // to improve readability and maintainability of the code
     // Q2: There are two ways to make a shared_ptr<Tracker<int>>. Which one is more appropriate here and is one always better?
+    // In most cases, using make_shared is always preferred compared to using constructor since make_shared allocates memory for both the control block and the object in a single allocation. This can lead to better performance and less memory fragmentation. Additionally, make_shared provides exception safety by ensuring that if an exception is thrown during the construction of the object, the memory will be properly deallocated, preventing memory leaks. Therefore, using make_shared is generally considered the better choice in this scenario.
+    return std::make_shared<Tracker<int>>(value);
 }
 
 // ─── Stage 3 main ─────────────────────────────────────────────────────────────
-/*
+// /*
 int main() {
     std::cerr << "=== Stage 3: shared_ptr ===\n";
 
@@ -238,7 +243,7 @@ int main() {
 
     return 0;
 }
-*/
+// */
 
 // =============================================================================
 // STAGE 4 — Cycles: the one hole in shared_ptr.
