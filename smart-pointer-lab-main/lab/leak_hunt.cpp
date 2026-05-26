@@ -66,7 +66,7 @@ struct Resource {
 // process_data allocates a Resource with raw new, does some work,
 // then deletes it. But if the work throws, the delete is skipped.
 //
-// Your prediction: ___________________________________________________________
+// Your prediction: since risky work can throw, process_data might not reach the delete statement, leading to a memory leak
 // ASan symptom:    ___________________________________________________________
 // Fix:             ___________________________________________________________
 // =============================================================================
@@ -88,7 +88,7 @@ void process_data(int x) {
 // =============================================================================
 // BUG B — ???
 //
-// Your prediction: ___________________________________________________________
+// Your prediction: neither of Publisher and Subscriber objects will be destroyed due to a reference cycle created by shared_ptrs, leading to a memory leak
 // ASan symptom:    ___________________________________________________________
 // Fix:             ___________________________________________________________
 // =============================================================================
@@ -132,7 +132,7 @@ void run_pubsub() {
 // =============================================================================
 // BUG C — unique_ptr passed by value unnecessarily
 //
-// Your prediction: ___________________________________________________________
+// Your prediction: Since unique_ptr is moved to print_resource, the unique_ptr in use_resource will be freed after print_resource returns, leading to a dangling pointer and potential use-after-free when we try to access r->value_ in use_resource after the call to print_resource
 // Fix:             ___________________________________________________________
 //
 // Note: ASan won't catch this one — it's not a memory error, it's a logic
