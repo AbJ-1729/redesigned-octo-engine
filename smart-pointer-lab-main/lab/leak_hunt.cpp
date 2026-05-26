@@ -67,8 +67,15 @@ struct Resource {
 // then deletes it. But if the work throws, the delete is skipped.
 //
 // Your prediction: since risky work can throw, process_data might not reach the delete statement, leading to a memory leak
-// ASan symptom:    ___________________________________________________________
-// Fix:             ___________________________________________________________
+// ASan symptom:    Direct leak of 48 byte(s) in 1 object(s) allocated from:
+    // #0 0x7ff716c98548 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:95
+    // #1 0x6373dfe5a927 in process_data(int) /workspaces/redesigned-octo-engine/smart-pointer-lab-main/lab/leak_hunt.cpp:80
+    // #2 0x6373dfe5b7c1 in main /workspaces/redesigned-octo-engine/smart-pointer-lab-main/lab/leak_hunt.cpp:168
+    // #3 0x7ff7160051c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    // #4 0x7ff71600528a in __libc_start_main_impl ../csu/libc-start.c:360
+    // #5 0x6373dfe5a5c4 in _start (/workspaces/redesigned-octo-engine/smart-pointer-lab-main/lab/leak_hunt+0x1c5c4) (BuildId: 7d31ffbe5a2c09aeeadd75d887450fa3b5b00b03)
+
+// Fix:             Using unique_ptr instead of raw new to manage the Resource. This way, even if an exception is thrown, the unique_ptr's destructor will automatically clean up the Resource, preventing memory leaks.
 // =============================================================================
 static void risky_work(int x) {
     if (x > 50)
@@ -77,20 +84,52 @@ static void risky_work(int x) {
 }
 
 void process_data(int x) {
-    Resource* r = new Resource("process_data", x);
-
+    // Resource* r = new Resource("process_data", x);
+    auto r = std::make_unique<Resource>("process_data", x);
     risky_work(x);
 
     r->describe();
-    delete r; 
+    //  delete r; 
 }
 
 // =============================================================================
 // BUG B — ???
 //
 // Your prediction: neither of Publisher and Subscriber objects will be destroyed due to a reference cycle created by shared_ptrs, leading to a memory leak
-// ASan symptom:    ___________________________________________________________
-// Fix:             ___________________________________________________________
+// ASan symptom:    Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+//     #0 0x79b347c23548 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:95
+//     #1 0x5cbe02364c38 in std::__new_allocator<std::_Sp_counted_ptr_inplace<Subscriber, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) /usr/include/c++/13/bits/new_allocator.h:151
+//     #2 0x5cbe02362fb3 in std::allocator<std::_Sp_counted_ptr_inplace<Subscriber, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long) /usr/include/c++/13/bits/allocator.h:198
+//     #3 0x5cbe02362fb3 in std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<Subscriber, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::allocator<std::_Sp_counted_ptr_inplace<Subscriber, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> >&, unsigned long) /usr/include/c++/13/bits/alloc_traits.h:482
+//     #4 0x5cbe02362fb3 in std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<Subscriber, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<Subscriber, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> > >(std::allocator<std::_Sp_counted_ptr_inplace<Subscriber, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> >&) /usr/include/c++/13/bits/allocated_ptr.h:98
+//     #5 0x5cbe02361bae in std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<Subscriber, std::allocator<void>, int>(Subscriber*&, std::_Sp_alloc_shared_tag<std::allocator<void> >, int&&) /usr/include/c++/13/bits/shared_ptr_base.h:969
+//     #6 0x5cbe02360e75 in std::__shared_ptr<Subscriber, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<void>, int>(std::_Sp_alloc_shared_tag<std::allocator<void> >, int&&) /usr/include/c++/13/bits/shared_ptr_base.h:1712
+//     #7 0x5cbe0235fac3 in std::shared_ptr<Subscriber>::shared_ptr<std::allocator<void>, int>(std::_Sp_alloc_shared_tag<std::allocator<void> >, int&&) /usr/include/c++/13/bits/shared_ptr.h:464
+//     #8 0x5cbe0235ce63 in std::shared_ptr<Subscriber> std::make_shared<Subscriber, int>(int&&) /usr/include/c++/13/bits/shared_ptr.h:1010
+//     #9 0x5cbe02356c5a in run_pubsub() /workspaces/redesigned-octo-engine/smart-pointer-lab-main/lab/leak_hunt.cpp:130
+//     #10 0x5cbe02357750 in main /workspaces/redesigned-octo-engine/smart-pointer-lab-main/lab/leak_hunt.cpp:183
+//     #11 0x79b346f901c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+//     #12 0x79b346f9028a in __libc_start_main_impl ../csu/libc-start.c:360
+//     #13 0x5cbe023565c4 in _start (/workspaces/redesigned-octo-engine/smart-pointer-lab-main/lab/leak_hunt+0x1c5c4) (BuildId: 2e5423dd12672874bfd8c6929e52c2e668667c25)
+
+// Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+//     #0 0x79b347c23548 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:95
+//     #1 0x5cbe02364a26 in std::__new_allocator<std::_Sp_counted_ptr_inplace<Publisher, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) /usr/include/c++/13/bits/new_allocator.h:151
+//     #2 0x5cbe02362333 in std::allocator<std::_Sp_counted_ptr_inplace<Publisher, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long) /usr/include/c++/13/bits/allocator.h:198
+//     #3 0x5cbe02362333 in std::allocator_traits<std::allocator<std::_Sp_counted_ptr_inplace<Publisher, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> > >::allocate(std::allocator<std::_Sp_counted_ptr_inplace<Publisher, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> >&, unsigned long) /usr/include/c++/13/bits/alloc_traits.h:482
+//     #4 0x5cbe02362333 in std::__allocated_ptr<std::allocator<std::_Sp_counted_ptr_inplace<Publisher, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> > > std::__allocate_guarded<std::allocator<std::_Sp_counted_ptr_inplace<Publisher, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> > >(std::allocator<std::_Sp_counted_ptr_inplace<Publisher, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> >&) /usr/include/c++/13/bits/allocated_ptr.h:98
+//     #5 0x5cbe0236170a in std::__shared_count<(__gnu_cxx::_Lock_policy)2>::__shared_count<Publisher, std::allocator<void>, int>(Publisher*&, std::_Sp_alloc_shared_tag<std::allocator<void> >, int&&) /usr/include/c++/13/bits/shared_ptr_base.h:969
+//     #6 0x5cbe02360b29 in std::__shared_ptr<Publisher, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<void>, int>(std::_Sp_alloc_shared_tag<std::allocator<void> >, int&&) /usr/include/c++/13/bits/shared_ptr_base.h:1712
+//     #7 0x5cbe0235f911 in std::shared_ptr<Publisher>::shared_ptr<std::allocator<void>, int>(std::_Sp_alloc_shared_tag<std::allocator<void> >, int&&) /usr/include/c++/13/bits/shared_ptr.h:464
+//     #8 0x5cbe0235cd1a in std::shared_ptr<Publisher> std::make_shared<Publisher, int>(int&&) /usr/include/c++/13/bits/shared_ptr.h:1010
+//     #9 0x5cbe02356b95 in run_pubsub() /workspaces/redesigned-octo-engine/smart-pointer-lab-main/lab/leak_hunt.cpp:129
+//     #10 0x5cbe02357750 in main /workspaces/redesigned-octo-engine/smart-pointer-lab-main/lab/leak_hunt.cpp:183
+//     #11 0x79b346f901c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+//     #12 0x79b346f9028a in __libc_start_main_impl ../csu/libc-start.c:360
+//     #13 0x5cbe023565c4 in _start (/workspaces/redesigned-octo-engine/smart-pointer-lab-main/lab/leak_hunt+0x1c5c4) (BuildId: 2e5423dd12672874bfd8c6929e52c2e668667c25)
+
+// SUMMARY: AddressSanitizer: 80 byte(s) leaked in 2 allocation(s).
+// Fix:             make either of the pointers (Publisher's subscriber_ or Subscriber's publisher_) a weak_ptr
 // =============================================================================
 struct Subscriber;
 
@@ -108,7 +147,7 @@ struct Publisher {
 
 struct Subscriber {
     int id_;
-    std::shared_ptr<Publisher> publisher_;
+    std::weak_ptr<Publisher> publisher_;
 
     explicit Subscriber(int id) : id_(id) {
         std::cerr << "[Subscriber #" << id_ << "] born\n";
@@ -133,12 +172,12 @@ void run_pubsub() {
 // BUG C — unique_ptr passed by value unnecessarily
 //
 // Your prediction: Since unique_ptr is moved to print_resource, the unique_ptr in use_resource will be freed after print_resource returns, leading to a dangling pointer and potential use-after-free when we try to access r->value_ in use_resource after the call to print_resource
-// Fix:             ___________________________________________________________
+// Fix:             pass the unique_ptr by as a const raw pointer
 //
 // Note: ASan won't catch this one — it's not a memory error, it's a logic
 // error. The log will show the resource dying at the wrong time.
 // =============================================================================
-void print_resource(std::unique_ptr<Resource> r) { 
+void print_resource(const Resource* r) { 
     std::cerr << "  print_resource: ";
     r->describe();
 }
@@ -146,7 +185,7 @@ void print_resource(std::unique_ptr<Resource> r) {
 void use_resource() {
     auto r = std::make_unique<Resource>("use_resource", 77);
 
-    print_resource(std::move(r)); 
+    print_resource(r.get()); 
 
     // What's the value of r now?
     std::cerr << "  back in use_resource, value=" << r->value_ << "\n"; 
@@ -176,11 +215,11 @@ int main() {
     run_pubsub();
     std::cerr << "  (did Publisher and Subscriber both get destroyed?)\n\n";
 
-    // ── Bug C ──────────────────────────────────────────────────────────────
-    std::cerr << "-- Bug C: unique_ptr by value --\n";
-    // Comment this out once you understand the crash — fix it first.
-    use_resource();
-    std::cerr << "  (was the resource still alive after print_resource returned?)\n\n";
+    // // ── Bug C ──────────────────────────────────────────────────────────────
+    // std::cerr << "-- Bug C: unique_ptr by value --\n";
+    // // Comment this out once you understand the crash — fix it first.
+    // use_resource();
+    // std::cerr << "  (was the resource still alive after print_resource returned?)\n\n";
 
     std::cerr << "=== end of main ===\n";
     return 0;
