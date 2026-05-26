@@ -31,7 +31,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 struct Node {
     int id_;
-    std::shared_ptr<Node> next_; 
+    std::weak_ptr<Node> next_; 
 
     explicit Node(int id) : id_(id) {
         std::cerr << "[Node #" << id_ << "] born\n";

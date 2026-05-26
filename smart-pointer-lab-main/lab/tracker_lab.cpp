@@ -253,9 +253,13 @@ int main() {
 //
 // Discussion questions (answer before moving to Stage 5):
 //   Q1: Which direction of a link should be weak? Why?
+//   one which is a mere observer, which in the node case is the next_ pointer. The next_ pointer should be weak because it does not own the next node, it just observes it.
 //   Q2: How do you safely dereference a weak_ptr?
+//   we call lock() on the weak_ptr, which returns a shared_ptr. If the original shared_ptr is still alive, lock() will return a valid shared_ptr that we can use to access the object. If the original shared_ptr has been destroyed, lock() will return an empty shared_ptr, which we can check for before dereferencing.
 //   Q3: What happens to a weak_ptr when its shared_ptr owner is destroyed?
+//   The weak_ptr becomes expired and returns an empty shared_ptr when lock() is called.
 //   Q4: Look at the Trader-Order set of objects. Why is the back-ref creation bad, and how do we fix it?
+//   The back-ref creation is bad because it creates a cycle of shared_ptrs between Trader and Order, which prevents the destructors from being called and leads to a memory leak. We can fix it by changing the back-ref in any of the objects(Order/Trader) to be a weak_ptr instead of a shared_ptr, so that it does not contribute to the reference count and allows for proper destruction of both Trader and Order when they go out of scope.
 // =============================================================================
 
 // =============================================================================
