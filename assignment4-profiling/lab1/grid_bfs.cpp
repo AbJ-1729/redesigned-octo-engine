@@ -193,9 +193,11 @@ int shortest_path_bfs(const vector<string> &grid, const RouteRequest &request,
     int cols = static_cast<int>(grid[0].size());
     int total = rows * cols;
 
-    int *distance = new int[total];
-    std::fill(distance, distance + total, -1);
-    unsigned char *visited = new unsigned char[total]{};
+    // int *distance = new int[total];
+    // std::fill(distance, distance + total, -1);
+    // unsigned char *visited = new unsigned char[total]{};
+    auto distance = std::make_unique<int[]>(total);
+    auto visited = std::make_unique<unsigned char[]>(total);
     vector<Point> frontier(static_cast<size_t>(total));
     size_t frontier_head = 0;
     size_t frontier_tail = 0;

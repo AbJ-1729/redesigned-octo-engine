@@ -1,0 +1,4 @@
+FlameGraph is available at: /home/codespace/FlameGraph
+Use it as: /home/codespace/FlameGraph/stackcollapse-perf.pl perf.script > perf.folded
+Then:      /home/codespace/FlameGraph/flamegraph.pl perf.folded > flamegraph.svg
+
