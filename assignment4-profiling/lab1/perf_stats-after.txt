@@ -1,0 +1,18 @@
+
+ Performance counter stats for './grid_bfs':
+
+        1824918671      cycles                                                                  (37.42%)
+        7876221869      instructions                     #    4.32  insn per cycle              (37.56%)
+         553209166      branches                                                                (37.70%)
+          35758121      branch-misses                    #    6.46% of all branches             (25.13%)
+        2184288262      cache-references                                                        (24.98%)
+           2749510      cache-misses                     #    0.13% of all cache refs           (24.87%)
+        2174425558      L1-dcache-loads                                                         (24.88%)
+           2714092      L1-dcache-load-misses            #    0.12% of all L1-dcache accesses   (24.88%)
+
+       0.675895897 seconds time elapsed
+
+       0.674845000 seconds user
+       0.001001000 seconds sys
+
+

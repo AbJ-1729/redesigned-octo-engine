@@ -1,0 +1,226 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 6K of event 'cycles:P'
+# Event count (approx.): 4189307246
+#
+# Children      Self  Command   Shared Object          Symbol                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+# ........  ........  ........  .....................  .......................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+#
+    99.96%     0.00%  grid_bfs  grid_bfs               [.] _start
+            |
+            ---_start
+               __libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
+               |          
+               |--59.46%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               |          |          
+               |           --26.51%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+               |          
+                --40.46%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+                          |          
+                           --40.44%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+
+    99.96%     0.00%  grid_bfs  libc.so.6              [.] __libc_start_main@@GLIBC_2.34
+            |
+            ---__libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
+               |          
+               |--59.46%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               |          |          
+               |           --26.51%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+               |          
+                --40.46%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+                          |          
+                           --40.44%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+
+    99.96%     0.00%  grid_bfs  libc.so.6              [.] __libc_start_call_main
+            |
+            ---__libc_start_call_main
+               main
+               |          
+               |--59.46%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               |          |          
+               |           --26.51%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+               |          
+                --40.46%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+                          |          
+                           --40.44%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+
+    99.96%     0.00%  grid_bfs  grid_bfs               [.] main
+            |
+            ---main
+               |          
+               |--59.46%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               |          |          
+               |           --26.51%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+               |          
+                --40.46%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+                          |          
+                           --40.44%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+
+    59.46%    32.95%  grid_bfs  grid_bfs               [.] compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+            |          
+            |--32.95%--_start
+            |          __libc_start_main@@GLIBC_2.34
+            |          __libc_start_call_main
+            |          main
+            |          compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+            |          
+             --26.51%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+                       next_pressure_value(int, int, int, int, int, int, int, int, int)
+
+    40.46%     0.00%  grid_bfs  grid_bfs               [.] run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+            |
+            ---run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+               |          
+                --40.44%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+
+    40.44%    40.29%  grid_bfs  grid_bfs               [.] shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+            |          
+             --40.29%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+                       shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+
+    26.51%    26.51%  grid_bfs  grid_bfs               [.] next_pressure_value(int, int, int, int, int, int, int, int, int)
+            |
+            ---_start
+               __libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
+               compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               next_pressure_value(int, int, int, int, int, int, int, int, int)
+
+     0.14%     0.12%  grid_bfs  libc.so.6              [.] __memset_zva64
+     0.06%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0t_64_sync
+     0.06%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0t_64_sync_handler
+     0.03%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _start
+     0.03%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_start
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_mem_abort
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_translation_fault
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_page_fault
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]      [k] handle_mm_fault
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __handle_mm_fault
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]      [k] handle_pte_fault
+     0.03%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_sysdep_start
+     0.03%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] dl_main
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0_da
+     0.03%     0.00%  grid_bfs  libc.so.6              [.] cfree@GLIBC_2.17
+     0.03%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_relocate_object
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_anonymous_page
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0_svc
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_el0_svc
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0_svc_common.constprop.0
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] invoke_syscall
+     0.02%     0.01%  grid_bfs  grid_bfs               [.] int std::uniform_int_distribution<int>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>::param_type const&) [clone .isra.0]
+     0.02%     0.00%  grid_bfs  grid_bfs               [.] generate_grid[abi:cxx11](int, int)
+     0.02%     0.02%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_lookup_symbol_x
+     0.02%     0.02%  grid_bfs  grid_bfs               [.] summarize_heatmap(std::vector<int, std::allocator<int> > const&, int, int)
+     0.02%     0.02%  grid_bfs  libc.so.6              [.] _int_free
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]      [k] __lruvec_stat_mod_folio
+     0.01%     0.00%  grid_bfs  libc.so.6              [.] __munmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __arm64_sys_munmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __vm_munmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_vmi_munmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_vmi_align_munmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] vms_complete_munmap_vmas
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] vms_clear_ptes
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] unmap_vmas
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] unmap_single_vma.isra.0
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] unmap_page_range
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] zap_pmd_range.isra.0
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] zap_pte_range
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] zap_present_ptes
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] folio_remove_rmap_ptes
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]      [k] folio_batch_move_lru
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] folio_add_lru_vma
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] folio_add_lru
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __folio_batch_add_and_move
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]      [k] __mod_node_page_state
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] folio_add_new_anon_rmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __folio_mod_stat
+     0.01%     0.01%  grid_bfs  grid_bfs               [.] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+     0.01%     0.00%  grid_bfs  grid_bfs               [.] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]      [k] __kmem_cache_alloc_bulk
+     0.01%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_protect_relro
+     0.01%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] mprotect
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __arm64_sys_mprotect
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_mprotect_pkey
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] mprotect_fixup
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] vma_modify_flags
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] vma_modify
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __split_vma
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] mas_preallocate
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] mas_node_count_gfp
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] mas_alloc_nodes
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] kmem_cache_alloc_bulk_noprof
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]      [k] bsearch
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_fault
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_read_fault
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] filemap_map_pages
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] set_pte_range
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] read_sanitised_ftr_reg
+     0.00%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_map_object_deps
+     0.00%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_catch_exception
+     0.00%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] openaux
+     0.00%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_map_object
+     0.00%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_map_object_from_fd
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0_ia
+     0.00%     0.00%  grid_bfs  [unknown]              [k] 0x0000f1ff6fffde0c
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __arm64_sys_execve
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_execveat_common.isra.0
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] bprm_execve
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] bprm_execve.part.0
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] exec_binprm
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] load_elf_binary
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __output_copy
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] elf_load
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] vm_mmap
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] vm_mmap_pgoff
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_mmap
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] mmap_region
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __mmap_region
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] perf_event_mmap
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] perf_event_mmap_event
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] perf_iterate_sb.constprop.0
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] perf_iterate_ctx
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] perf_event_mmap_output
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] perf_output_copy
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] this_cpu_has_cap
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] setup_new_exec
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] arch_setup_new_exec
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] update_cntkctl_el1
+     0.00%     0.00%  perf-exe  [unknown]              [k] 0x0000f1ff6fffde0c
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0t_64_sync
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0t_64_sync_handler
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0_svc
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] do_el0_svc
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0_svc_common.constprop.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] invoke_syscall
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] __arm64_sys_execve
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] do_execveat_common.isra.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] bprm_execve
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] bprm_execve.part.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] exec_binprm
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] load_elf_binary
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] begin_new_exec
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_event_comm_output
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] __set_task_comm
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_event_comm
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_event_comm_event.constprop.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_iterate_sb.constprop.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] mutex_lock
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_event_enable_on_exec
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_event_exec
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

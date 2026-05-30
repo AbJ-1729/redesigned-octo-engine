@@ -20,7 +20,7 @@ constexpr int kSmallRequestCount = 25;
 constexpr int kHeatmapThresholdCount = 256;
 constexpr int kCongestionPasses = 4096;
 constexpr int kSmallCongestionPasses = 32;
-constexpr uint32_t kSeed = 0xC0FFEEu;
+constexpr int kSeed = 0xC0FFEEu;
 
 struct Point {
     int row;
@@ -188,17 +188,17 @@ uint64_t checksum_label(const string &label) {
  * The function returns -1 when the goal cannot be reached.
  */
 int shortest_path_bfs(const vector<string> &grid, const RouteRequest &request,
-                      vector<int> &heatmap) {
+                      vector<int> &heatmap, vector<int>& distance, vector<int>& visited, vector<Point>& frontier, int& generation) {
     int rows = static_cast<int>(grid.size());
     int cols = static_cast<int>(grid[0].size());
-    int total = rows * cols;
+    // int total = rows * cols;
 
     // int *distance = new int[total];
     // std::fill(distance, distance + total, -1);
     // unsigned char *visited = new unsigned char[total]{};
-    auto distance = std::make_unique<int[]>(total);
-    auto visited = std::make_unique<unsigned char[]>(total);
-    vector<Point> frontier(static_cast<size_t>(total));
+    // auto distance = std::make_unique<int[]>(total);
+    // auto visited = std::make_unique<unsigned char[]>(total);
+    // vector<Point> frontier(static_cast<size_t>(total));
     size_t frontier_head = 0;
     size_t frontier_tail = 0;
 
@@ -237,7 +237,7 @@ int shortest_path_bfs(const vector<string> &grid, const RouteRequest &request,
                 continue;
             }
 
-            visited[next_index] = 1;
+            visited[next_index] = generation;
             distance[next_index] = distance[current_index] + 1;
             heatmap[next_index] += 1;
             frontier[frontier_tail++] = {next_row, next_col};
@@ -255,13 +255,21 @@ RunSummary run_all_requests(const vector<string> &grid,
                             vector<int> &heatmap) {
     RunSummary summary;
     summary.requests = static_cast<int>(requests.size());
-
+    int rows = static_cast<int>(grid.size());
+    int cols = static_cast<int>(grid[0].size());
+    int total = rows * cols;
+    vector<int> distance_(total);
+    vector<int> visited(total, 0);
+    vector<Point> frontier(total);
+    int generation=0;
     for (int i = 0; i < summary.requests; ++i) {
         const RouteRequest &request = requests[i];
         string route_label = format_route_label(request, i);
         summary.route_label_checksum ^= checksum_label(route_label);
 
-        int distance = shortest_path_bfs(grid, request, heatmap);
+        generation++;
+
+        int distance = shortest_path_bfs(grid, request, heatmap, distance_, visited, frontier, generation);
 
         if (distance >= 0) {
             summary.reachable += 1;
@@ -324,8 +332,9 @@ HeatmapSummary summarize_heatmap(const vector<int> &heatmap, int rows, int cols)
  * source value, and a small deterministic pulse so each pass keeps doing real
  * work instead of collapsing into a trivial copy.
  */
-int next_pressure_value(int center, int north, int south, int west, int east,
+inline int next_pressure_value(int center, int north, int south, int west, int east,
                         int source, int row, int col, int pass) {
+    // TODO: convert everything to uint32 consistently
     int pulse = (row * 17 + col * 31 + pass * 13) & 15;
     int pressure = (center * 2 + north + south + west + east + source + pulse) / 8;
 
@@ -343,7 +352,7 @@ int next_pressure_value(int center, int north, int south, int west, int east,
  *
  * Each pass depends on the previous pass, so the outer loop represents real
  * iterative work. The inner loops intentionally walk a row-major array in
- * column-major order to create a cache-locality problem for students to find.
+ * column-major order to create a cache-locality problem for students to find.//fixed it :p
  */
 CongestionSummary compute_congestion_pressure(const vector<int> &heatmap,
                                               int rows, int cols,
@@ -357,8 +366,8 @@ CongestionSummary compute_congestion_pressure(const vector<int> &heatmap,
     }
 
     for (int pass = 0; pass < congestion_passes; ++pass) {
-        for (int col = 1; col < cols - 1; ++col) {
-            for (int row = 1; row < rows - 1; ++row) {
+        for (int row = 1; row < rows - 1; ++row) {
+            for (int col = 1; col < cols - 1; ++col) {
                 int index = row * cols + col;
 
                 int center = current[index];
@@ -453,8 +462,21 @@ bool run_sanity_check() {
     RouteRequest reachable{{0, 0}, {4, 4}};
     RouteRequest unreachable{{0, 0}, {1, 1}};
 
-    return shortest_path_bfs(grid, reachable, heatmap) == 8 &&
-           shortest_path_bfs(grid, unreachable, heatmap) == -1;
+    int rows = static_cast<int>(grid.size());
+    int cols = static_cast<int>(grid[0].size());
+    int total = rows * cols;
+    // auto distance = std::make_unique<int[]>(total);
+    // auto visited = std::make_unique<unsigned char[]>(total);
+    // vector<Point> frontier(static_cast<size_t>(total));
+
+    vector<int> distance(total);
+    vector<int> visited(total, 0);
+    vector<Point> frontier(total);
+    int generation=0;
+    
+
+    return shortest_path_bfs(grid, reachable, heatmap, distance, visited, frontier, generation) == 8 &&
+           shortest_path_bfs(grid, unreachable, heatmap, distance, visited, frontier, generation) == -1;
 }
 
 /**

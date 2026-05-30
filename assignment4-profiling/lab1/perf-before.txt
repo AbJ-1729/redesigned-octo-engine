@@ -3,952 +3,218 @@
 #
 # Total Lost Samples: 0
 #
-# Samples: 12K of event 'task-clock:ppp'
-# Event count (approx.): 3181500000
+# Samples: 6K of event 'cycles:P'
+# Event count (approx.): 4193228208
 #
-# Children      Self  Command   Shared Object         Symbol                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-# ........  ........  ........  ....................  .......................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+# Children      Self  Command   Shared Object          Symbol                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+# ........  ........  ........  .....................  .......................................................................................................................................................................................................................................................................................................................................................................................................................................................................
 #
-    99.94%     0.00%  grid_bfs  grid_bfs              [.] _start
-            |
-            ---_start
-               __libc_start_main@@GLIBC_2.34
-               __libc_start_call_main
-               |          
-                --99.93%--main
-                          |          
-                          |--52.11%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
-                          |          |          
-                          |           --28.26%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-                          |          
-                          |--39.17%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
-                          |          |          
-                          |           --38.94%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
-                          |                     |          
-                          |                      --5.60%--0xffffffffad400bc7
-                          |                                0xffffffffad2e6824
-                          |                                |          
-                          |                                |--3.74%--0xffffffffac2b6d6f
-                          |                                |          |          
-                          |                                |           --3.44%--0xffffffffac5d50f2
-                          |                                |                     |          
-                          |                                |                      --3.33%--0xffffffffac5d4b77
-                          |                                |                                |          
-                          |                                |                                 --3.14%--0xffffffffac5d482f
-                          |                                |                                           |          
-                          |                                |                                            --1.51%--0xffffffffac5d347a
-                          |                                |                                                      |          
-                          |                                |                                                       --1.47%--0xffffffffac5d3368
-                          |                                |                                                                 |          
-                          |                                |                                                                  --1.41%--0xffffffffac636b9a
-                          |                                |                                                                            |          
-                          |                                |                                                                             --1.34%--0xffffffffac636851
-                          |                                |                                                                                       |          
-                          |                                |                                                                                        --1.12%--0xffffffffac5ffe6b
-                          |                                |                                                                                                  |          
-                          |                                |                                                                                                   --0.79%--0xffffffffac5fe72a
-                          |                                |                                                                                                             |          
-                          |                                |                                                                                                              --0.78%--0xffffffffad270367
-                          |                                |          
-                          |                                 --1.56%--0xffffffffac2b6ce2
-                          |          
-                           --8.62%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-
-    99.94%     0.00%  grid_bfs  libc.so.6             [.] __libc_start_main@@GLIBC_2.34
-            |
-            ---__libc_start_main@@GLIBC_2.34
-               __libc_start_call_main
-               |          
-                --99.93%--main
-                          |          
-                          |--52.11%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
-                          |          |          
-                          |           --28.26%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-                          |          
-                          |--39.17%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
-                          |          |          
-                          |           --38.94%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
-                          |                     |          
-                          |                      --5.60%--0xffffffffad400bc7
-                          |                                0xffffffffad2e6824
-                          |                                |          
-                          |                                |--3.74%--0xffffffffac2b6d6f
-                          |                                |          |          
-                          |                                |           --3.44%--0xffffffffac5d50f2
-                          |                                |                     |          
-                          |                                |                      --3.33%--0xffffffffac5d4b77
-                          |                                |                                |          
-                          |                                |                                 --3.14%--0xffffffffac5d482f
-                          |                                |                                           |          
-                          |                                |                                            --1.51%--0xffffffffac5d347a
-                          |                                |                                                      |          
-                          |                                |                                                       --1.47%--0xffffffffac5d3368
-                          |                                |                                                                 |          
-                          |                                |                                                                  --1.41%--0xffffffffac636b9a
-                          |                                |                                                                            |          
-                          |                                |                                                                             --1.34%--0xffffffffac636851
-                          |                                |                                                                                       |          
-                          |                                |                                                                                        --1.12%--0xffffffffac5ffe6b
-                          |                                |                                                                                                  |          
-                          |                                |                                                                                                   --0.79%--0xffffffffac5fe72a
-                          |                                |                                                                                                             |          
-                          |                                |                                                                                                              --0.78%--0xffffffffad270367
-                          |                                |          
-                          |                                 --1.56%--0xffffffffac2b6ce2
-                          |          
-                           --8.62%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-
-    99.94%     0.00%  grid_bfs  libc.so.6             [.] __libc_start_call_main
-            |
-            ---__libc_start_call_main
-               |          
-                --99.93%--main
-                          |          
-                          |--52.11%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
-                          |          |          
-                          |           --28.26%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-                          |          
-                          |--39.17%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
-                          |          |          
-                          |           --38.94%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
-                          |                     |          
-                          |                      --5.60%--0xffffffffad400bc7
-                          |                                0xffffffffad2e6824
-                          |                                |          
-                          |                                |--3.74%--0xffffffffac2b6d6f
-                          |                                |          |          
-                          |                                |           --3.44%--0xffffffffac5d50f2
-                          |                                |                     |          
-                          |                                |                      --3.33%--0xffffffffac5d4b77
-                          |                                |                                |          
-                          |                                |                                 --3.14%--0xffffffffac5d482f
-                          |                                |                                           |          
-                          |                                |                                            --1.51%--0xffffffffac5d347a
-                          |                                |                                                      |          
-                          |                                |                                                       --1.47%--0xffffffffac5d3368
-                          |                                |                                                                 |          
-                          |                                |                                                                  --1.41%--0xffffffffac636b9a
-                          |                                |                                                                            |          
-                          |                                |                                                                             --1.34%--0xffffffffac636851
-                          |                                |                                                                                       |          
-                          |                                |                                                                                        --1.12%--0xffffffffac5ffe6b
-                          |                                |                                                                                                  |          
-                          |                                |                                                                                                   --0.79%--0xffffffffac5fe72a
-                          |                                |                                                                                                             |          
-                          |                                |                                                                                                              --0.78%--0xffffffffad270367
-                          |                                |          
-                          |                                 --1.56%--0xffffffffac2b6ce2
-                          |          
-                           --8.62%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-
-    99.93%     0.00%  grid_bfs  grid_bfs              [.] main
-            |
-            ---main
-               |          
-               |--52.11%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
-               |          |          
-               |           --28.26%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-               |          
-               |--39.17%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
-               |          |          
-               |           --38.94%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
-               |                     |          
-               |                      --5.60%--0xffffffffad400bc7
-               |                                0xffffffffad2e6824
-               |                                |          
-               |                                |--3.74%--0xffffffffac2b6d6f
-               |                                |          |          
-               |                                |           --3.44%--0xffffffffac5d50f2
-               |                                |                     |          
-               |                                |                      --3.33%--0xffffffffac5d4b77
-               |                                |                                |          
-               |                                |                                 --3.14%--0xffffffffac5d482f
-               |                                |                                           |          
-               |                                |                                            --1.51%--0xffffffffac5d347a
-               |                                |                                                      |          
-               |                                |                                                       --1.47%--0xffffffffac5d3368
-               |                                |                                                                 |          
-               |                                |                                                                  --1.41%--0xffffffffac636b9a
-               |                                |                                                                            |          
-               |                                |                                                                             --1.34%--0xffffffffac636851
-               |                                |                                                                                       |          
-               |                                |                                                                                        --1.12%--0xffffffffac5ffe6b
-               |                                |                                                                                                  |          
-               |                                |                                                                                                   --0.79%--0xffffffffac5fe72a
-               |                                |                                                                                                             |          
-               |                                |                                                                                                              --0.78%--0xffffffffad270367
-               |                                |          
-               |                                 --1.56%--0xffffffffac2b6ce2
-               |          
-                --8.62%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-
-    52.11%    23.80%  grid_bfs  grid_bfs              [.] compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
-            |          
-            |--28.30%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
-            |          |          
-            |           --28.26%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-            |          
-             --23.80%--_start
-                       __libc_start_main@@GLIBC_2.34
-                       __libc_start_call_main
-                       main
-                       compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
-
-    39.17%     0.01%  grid_bfs  grid_bfs              [.] run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
-            |          
-             --39.16%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
-                       |          
-                        --38.94%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
-                                  |          
-                                   --5.60%--0xffffffffad400bc7
-                                             0xffffffffad2e6824
-                                             |          
-                                             |--3.74%--0xffffffffac2b6d6f
-                                             |          |          
-                                             |           --3.44%--0xffffffffac5d50f2
-                                             |                     |          
-                                             |                      --3.33%--0xffffffffac5d4b77
-                                             |                                |          
-                                             |                                 --3.14%--0xffffffffac5d482f
-                                             |                                           |          
-                                             |                                            --1.51%--0xffffffffac5d347a
-                                             |                                                      |          
-                                             |                                                       --1.47%--0xffffffffac5d3368
-                                             |                                                                 |          
-                                             |                                                                  --1.41%--0xffffffffac636b9a
-                                             |                                                                            |          
-                                             |                                                                             --1.34%--0xffffffffac636851
-                                             |                                                                                       |          
-                                             |                                                                                        --1.12%--0xffffffffac5ffe6b
-                                             |                                                                                                  |          
-                                             |                                                                                                   --0.79%--0xffffffffac5fe72a
-                                             |                                                                                                             |          
-                                             |                                                                                                              --0.78%--0xffffffffad270367
-                                             |          
-                                              --1.56%--0xffffffffac2b6ce2
-
-    38.94%    32.84%  grid_bfs  grid_bfs              [.] shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
-            |          
-            |--32.84%--_start
-            |          __libc_start_main@@GLIBC_2.34
-            |          __libc_start_call_main
-            |          main
-            |          run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
-            |          shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
-            |          
-             --6.11%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
-                       |          
-                        --5.60%--0xffffffffad400bc7
-                                  0xffffffffad2e6824
-                                  |          
-                                  |--3.74%--0xffffffffac2b6d6f
-                                  |          |          
-                                  |           --3.44%--0xffffffffac5d50f2
-                                  |                     |          
-                                  |                      --3.33%--0xffffffffac5d4b77
-                                  |                                |          
-                                  |                                 --3.14%--0xffffffffac5d482f
-                                  |                                           |          
-                                  |                                            --1.51%--0xffffffffac5d347a
-                                  |                                                      |          
-                                  |                                                       --1.47%--0xffffffffac5d3368
-                                  |                                                                 |          
-                                  |                                                                  --1.41%--0xffffffffac636b9a
-                                  |                                                                            |          
-                                  |                                                                             --1.34%--0xffffffffac636851
-                                  |                                                                                       |          
-                                  |                                                                                        --1.12%--0xffffffffac5ffe6b
-                                  |                                                                                                  |          
-                                  |                                                                                                   --0.79%--0xffffffffac5fe72a
-                                  |                                                                                                             |          
-                                  |                                                                                                              --0.78%--0xffffffffad270367
-                                  |          
-                                   --1.56%--0xffffffffac2b6ce2
-
-    36.89%    36.85%  grid_bfs  grid_bfs              [.] next_pressure_value(int, int, int, int, int, int, int, int, int)
-            |          
-             --36.85%--_start
-                       __libc_start_main@@GLIBC_2.34
-                       __libc_start_call_main
-                       main
-                       |          
-                       |--28.23%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
-                       |          next_pressure_value(int, int, int, int, int, int, int, int, int)
-                       |          
-                        --8.61%--next_pressure_value(int, int, int, int, int, int, int, int, int)
-
-     5.78%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad400bc7
-            |
-            ---0xffffffffad400bc7
-               0xffffffffad2e6824
-               |          
-               |--3.90%--0xffffffffac2b6d6f
-               |          |          
-               |           --3.59%--0xffffffffac5d50f2
-               |                     |          
-               |                      --3.47%--0xffffffffac5d4b77
-               |                                |          
-               |                                 --3.27%--0xffffffffac5d482f
-               |                                           |          
-               |                                            --1.58%--0xffffffffac5d347a
-               |                                                      |          
-               |                                                       --1.54%--0xffffffffac5d3368
-               |                                                                 |          
-               |                                                                  --1.49%--0xffffffffac636b9a
-               |                                                                            |          
-               |                                                                             --1.39%--0xffffffffac636851
-               |                                                                                       |          
-               |                                                                                        --1.18%--0xffffffffac5ffe6b
-               |                                                                                                  |          
-               |                                                                                                   --0.83%--0xffffffffac5fe72a
-               |                                                                                                             |          
-               |                                                                                                              --0.81%--0xffffffffad270367
-               |          
-                --1.58%--0xffffffffac2b6ce2
-
-     5.78%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e6824
-            |
-            ---0xffffffffad2e6824
-               |          
-               |--3.90%--0xffffffffac2b6d6f
-               |          |          
-               |           --3.59%--0xffffffffac5d50f2
-               |                     |          
-               |                      --3.47%--0xffffffffac5d4b77
-               |                                |          
-               |                                 --3.27%--0xffffffffac5d482f
-               |                                           |          
-               |                                            --1.58%--0xffffffffac5d347a
-               |                                                      |          
-               |                                                       --1.54%--0xffffffffac5d3368
-               |                                                                 |          
-               |                                                                  --1.49%--0xffffffffac636b9a
-               |                                                                            |          
-               |                                                                             --1.39%--0xffffffffac636851
-               |                                                                                       |          
-               |                                                                                        --1.18%--0xffffffffac5ffe6b
-               |                                                                                                  |          
-               |                                                                                                   --0.83%--0xffffffffac5fe72a
-               |                                                                                                             |          
-               |                                                                                                              --0.81%--0xffffffffad270367
-               |          
-                --1.58%--0xffffffffac2b6ce2
-
-     3.90%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6d6f
-            |
-            ---0xffffffffac2b6d6f
-               |          
-                --3.59%--0xffffffffac5d50f2
-                          |          
-                           --3.47%--0xffffffffac5d4b77
-                                     |          
-                                      --3.27%--0xffffffffac5d482f
-                                                |          
-                                                 --1.58%--0xffffffffac5d347a
-                                                           |          
-                                                            --1.54%--0xffffffffac5d3368
-                                                                      |          
-                                                                       --1.49%--0xffffffffac636b9a
-                                                                                 |          
-                                                                                  --1.39%--0xffffffffac636851
-                                                                                            |          
-                                                                                             --1.18%--0xffffffffac5ffe6b
-                                                                                                       |          
-                                                                                                        --0.83%--0xffffffffac5fe72a
-                                                                                                                  |          
-                                                                                                                   --0.81%--0xffffffffad270367
-
-     3.59%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d50f2
-            |
-            ---0xffffffffac5d50f2
-               |          
-                --3.47%--0xffffffffac5d4b77
-                          |          
-                           --3.27%--0xffffffffac5d482f
-                                     |          
-                                      --1.58%--0xffffffffac5d347a
-                                                |          
-                                                 --1.54%--0xffffffffac5d3368
-                                                           |          
-                                                            --1.49%--0xffffffffac636b9a
-                                                                      |          
-                                                                       --1.39%--0xffffffffac636851
-                                                                                 |          
-                                                                                  --1.18%--0xffffffffac5ffe6b
-                                                                                            |          
-                                                                                             --0.83%--0xffffffffac5fe72a
-                                                                                                       |          
-                                                                                                        --0.81%--0xffffffffad270367
-
-     3.47%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4b77
-            |
-            ---0xffffffffac5d4b77
-               |          
-                --3.27%--0xffffffffac5d482f
-                          |          
-                           --1.58%--0xffffffffac5d347a
-                                     |          
-                                      --1.54%--0xffffffffac5d3368
-                                                |          
-                                                 --1.49%--0xffffffffac636b9a
-                                                           |          
-                                                            --1.39%--0xffffffffac636851
-                                                                      |          
-                                                                       --1.18%--0xffffffffac5ffe6b
-                                                                                 |          
-                                                                                  --0.83%--0xffffffffac5fe72a
-                                                                                            |          
-                                                                                             --0.81%--0xffffffffad270367
-
-     3.27%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d482f
-            |
-            ---0xffffffffac5d482f
-               |          
-                --1.58%--0xffffffffac5d347a
-                          |          
-                           --1.54%--0xffffffffac5d3368
-                                     |          
-                                      --1.49%--0xffffffffac636b9a
-                                                |          
-                                                 --1.39%--0xffffffffac636851
-                                                           |          
-                                                            --1.18%--0xffffffffac5ffe6b
-                                                                      |          
-                                                                       --0.83%--0xffffffffac5fe72a
-                                                                                 |          
-                                                                                  --0.81%--0xffffffffad270367
-
-     1.58%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d347a
-            |          
-             --1.57%--0xffffffffac5d347a
-                       |          
-                        --1.54%--0xffffffffac5d3368
-                                  |          
-                                   --1.49%--0xffffffffac636b9a
-                                             |          
-                                              --1.39%--0xffffffffac636851
-                                                        |          
-                                                         --1.18%--0xffffffffac5ffe6b
-                                                                   |          
-                                                                    --0.83%--0xffffffffac5fe72a
-                                                                              |          
-                                                                               --0.81%--0xffffffffad270367
-
-     1.58%     1.58%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6ce2
+    99.96%     0.00%  grid_bfs  grid_bfs               [.] _start
             |
             ---_start
                __libc_start_main@@GLIBC_2.34
                __libc_start_call_main
                main
-               run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
-               shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
                |          
-                --1.56%--0xffffffffad400bc7
-                          0xffffffffad2e6824
-                          0xffffffffac2b6ce2
-
-     1.54%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3368
-            |
-            ---0xffffffffac5d3368
+               |--59.45%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               |          |          
+               |           --22.07%--next_pressure_value(int, int, int, int, int, int, int, int, int)
                |          
-                --1.49%--0xffffffffac636b9a
+                --40.44%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
                           |          
-                           --1.39%--0xffffffffac636851
-                                     |          
-                                      --1.18%--0xffffffffac5ffe6b
-                                                |          
-                                                 --0.83%--0xffffffffac5fe72a
-                                                           |          
-                                                            --0.81%--0xffffffffad270367
+                           --40.40%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
 
-     1.49%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac636b9a
+    99.96%     0.00%  grid_bfs  libc.so.6              [.] __libc_start_main@@GLIBC_2.34
             |
-            ---0xffffffffac636b9a
+            ---__libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
                |          
-                --1.39%--0xffffffffac636851
+               |--59.45%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               |          |          
+               |           --22.07%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+               |          
+                --40.44%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
                           |          
-                           --1.18%--0xffffffffac5ffe6b
-                                     |          
-                                      --0.83%--0xffffffffac5fe72a
-                                                |          
-                                                 --0.81%--0xffffffffad270367
+                           --40.40%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
 
-     1.39%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac636851
+    99.96%     0.00%  grid_bfs  libc.so.6              [.] __libc_start_call_main
             |
-            ---0xffffffffac636851
+            ---__libc_start_call_main
+               main
                |          
-                --1.18%--0xffffffffac5ffe6b
+               |--59.45%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               |          |          
+               |           --22.07%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+               |          
+                --40.44%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
                           |          
-                           --0.83%--0xffffffffac5fe72a
-                                     |          
-                                      --0.81%--0xffffffffad270367
+                           --40.40%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
 
-     1.18%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffe6b
+    99.96%     0.00%  grid_bfs  grid_bfs               [.] main
             |
-            ---0xffffffffac5ffe6b
+            ---main
                |          
-                --0.83%--0xffffffffac5fe72a
+               |--59.45%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               |          |          
+               |           --22.07%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+               |          
+                --40.44%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
                           |          
-                           --0.81%--0xffffffffad270367
+                           --40.40%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
 
-     0.85%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fe72a
-            |
-            ---0xffffffffac5fe72a
-               |          
-                --0.83%--0xffffffffad270367
-
-     0.83%     0.82%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad270367
+    59.45%    37.38%  grid_bfs  grid_bfs               [.] compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
             |          
-             --0.82%--_start
+            |--37.38%--_start
+            |          __libc_start_main@@GLIBC_2.34
+            |          __libc_start_call_main
+            |          main
+            |          compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+            |          
+             --22.07%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+                       next_pressure_value(int, int, int, int, int, int, int, int, int)
+
+    40.44%     0.00%  grid_bfs  grid_bfs               [.] run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+            |
+            ---run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+               |          
+                --40.40%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+
+    40.40%    40.17%  grid_bfs  grid_bfs               [.] shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+            |          
+             --40.17%--_start
                        __libc_start_main@@GLIBC_2.34
                        __libc_start_call_main
                        main
                        run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
-                       |          
-                        --0.81%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
-                                  |          
-                                   --0.79%--0xffffffffad400bc7
-                                             0xffffffffad2e6824
-                                             0xffffffffac2b6d6f
-                                             0xffffffffac5d50f2
-                                             0xffffffffac5d4b77
-                                             0xffffffffac5d482f
-                                             0xffffffffac5d347a
-                                             0xffffffffac5d3368
-                                             0xffffffffac636b9a
-                                             0xffffffffac636851
-                                             |          
-                                              --0.77%--0xffffffffac5ffe6b
-                                                        0xffffffffac5fe72a
-                                                        0xffffffffad270367
+                       shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
 
-     0.52%     0.52%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2f5119
-            |          
-             --0.51%--_start
-                       __libc_start_main@@GLIBC_2.34
-                       __libc_start_call_main
-                       main
+    22.07%    22.07%  grid_bfs  grid_bfs               [.] next_pressure_value(int, int, int, int, int, int, int, int, int)
+            |
+            ---_start
+               __libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
+               compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               next_pressure_value(int, int, int, int, int, int, int, int, int)
 
-     0.48%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d36a1
-     0.47%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5831cf
-     0.42%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5822d6
-     0.38%     0.00%  grid_bfs  libstdc++.so.6.0.33   [.] operator new(unsigned long)
-     0.38%     0.00%  grid_bfs  libc.so.6             [.] malloc
-     0.38%     0.02%  grid_bfs  libc.so.6             [.] _int_malloc
-     0.35%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d34cb
-     0.29%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fe712
-     0.25%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3585
-     0.22%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66de58
-     0.22%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac620212
-     0.21%     0.21%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66c63f
-     0.21%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d5130
-     0.20%     0.19%  grid_bfs  libc.so.6             [.] __memset_avx2_unaligned_erms
-     0.20%     0.00%  grid_bfs  libc.so.6             [.] __default_morecore@GLIBC_2.2.5
-     0.20%     0.03%  grid_bfs  libc.so.6             [.] __brk
-     0.19%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad400130
-     0.18%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3696
-     0.16%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6d34
-     0.15%     0.15%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5c8257
-     0.14%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2ecc7e
-     0.14%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2ec922
-     0.13%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e17bc
-     0.13%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc970
-     0.12%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad40102b
-     0.11%     0.11%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac9671ea
-     0.11%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac206b6f
-     0.11%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5df0d2
-     0.10%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ebaf8
-     0.09%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2ec67c
-     0.09%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5cffdc
-     0.09%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e58d3
-     0.09%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d35ee
-     0.07%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5def66
-     0.07%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e705d
-     0.07%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc2f5
-     0.06%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d388a
-     0.06%     0.06%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d46b8
-     0.06%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3ae31e
-     0.06%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6697c0
-     0.06%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_start_user
-     0.06%     0.06%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc9c1
-     0.06%     0.06%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2f5670
-     0.06%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad400e8b
-     0.06%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e5ad7
-     0.05%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_start
-     0.05%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_sysdep_start
-     0.05%     0.05%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2ec613
-     0.05%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] dl_main
-     0.05%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fffc2
-     0.05%     0.05%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac375f41
-     0.05%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d46b3
-     0.04%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad400feb
-     0.04%     0.04%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac582293
-     0.04%     0.04%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac9671e4
-     0.04%     0.04%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e6ee0
-     0.04%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac669737
-     0.04%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66de20
-     0.04%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66de49
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e5833
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2f540b
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad504104
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5a6f87
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6697b9
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5c791a
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac669779
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d35f3
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e1789
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac375a66
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4970
-     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2503f5
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3ae22a
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3ae27d
-     0.03%     0.02%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_relocate_object
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3adc2d
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3a832b
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e6f6c
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3a81e7
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3a8136
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5cffff
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc91c
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac636804
-     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac636b7e
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc12c
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2f5780
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5a4c0e
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d36a5
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d46c4
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac96720d
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac32e625
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5c829a
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6d73
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e17c8
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3acde5
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e6be1
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e12c8
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fffe4
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ff3dd
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2ee0fe
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2edd02
-     0.02%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_map_object_deps
-     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad50410b
-     0.02%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_catch_exception
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfe006b
-     0.02%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] openaux
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfdfa93
-     0.02%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_map_object
-     0.02%     0.00%  grid_bfs  [hv_netvsc]           [k] 0xffffffffc065a44f
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfdf90a
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffd61
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffe6e
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffed3
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6338f8
-     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fff2d
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfdf1f6
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac636184
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6361bd
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac636807
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad504109
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfdeb88
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8d73
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac666ef7
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac666f18
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66b8fc
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac9671d1
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad091fd9
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d339c
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac620202
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6697c1
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66de5a
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffaca72a4d
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad091bd2
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b9f99
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3443
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d34cd
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d34db
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d34e3
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d394d
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8ef2
-     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d34df
-     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8eef
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad091a21
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d46ed
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad09191e
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5c8292
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad250310
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad091881
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5cffe7
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d5019
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d51bd
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad09165c
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6f59
-     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac375f47
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad0d0411
-     0.02%     0.02%  grid_bfs  grid_bfs              [.] std::__cxx11::to_string(int)
-     0.02%     0.02%  grid_bfs  ld-linux-x86-64.so.2  [.] do_lookup_x
-     0.02%     0.01%  grid_bfs  grid_bfs              [.] int std::uniform_int_distribution<int>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>::param_type const&) [clone .isra.0]
-     0.02%     0.01%  grid_bfs  libc.so.6             [.] cfree@GLIBC_2.2.5
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3c05f3
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6189db
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac581205
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e58de
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e5910
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66e0dc
-     0.02%     0.00%  grid_bfs  grid_bfs              [.] generate_grid[abi:cxx11](int, int)
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5c7919
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3677
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5de619
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8fbe
-     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fe658
-     0.02%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_lookup_symbol_x
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac60f213
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac611ba5
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac54a19f
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fca57
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc100
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc121
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc175
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc18b
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc95a
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6683af
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5bd9c1
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fa5c2
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fa5cb
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fb127
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc914
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc947
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc980
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc983
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc997
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc99d
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc9b8
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fca22
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffce5
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6610a2
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad270369
-     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_map_object_from_fd
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac4284dc
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5a4c0a
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5a4c1c
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5da254
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5de434
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fe66e
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fe674
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fe75e
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fe837
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac866ab6
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac86a745
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac9671dc
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad24b883
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad250400
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad257231
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2ee2c0
-     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] mmap64
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac581dac
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5a4bf0
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5a6f7d
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5da947
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ebaeb
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5f7560
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5f7566
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffced
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffcef
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffd0a
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffd57
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffd5a
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffde2
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffe06
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac633944
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66867e
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66a4a0
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2f1435
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2f1436
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac316238
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5821da
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5dee01
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5defc8
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ffce0
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac633836
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6367f9
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac63680b
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac63681d
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac669739
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3c0527
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5822d7
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac582316
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6188a9
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac636b82
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac636b9d
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac636bb2
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac666f01
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6697aa
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66b5e6
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66b82a
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66b839
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac967202
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac967209
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac9b6af9
-     0.01%     0.01%  grid_bfs  [overlay]             [k] 0x000000000000be05
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac206b7a
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3c0883
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d310a
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d336d
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4efe
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8d6c
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8fc1
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8fd1
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ebab5
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5ebafc
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac652995
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac666ed0
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66de25
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66de5e
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66de7c
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac9671c5
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac9671c6
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac249713
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5831b0
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5c791b
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3423
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3495
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d34b1
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d365d
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3684
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d36b7
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3902
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3957
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8f0d
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8f48
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6201f0
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac6201f6
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5dca21
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d3406
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d46bb
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d47d1
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d47d5
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e8ec5
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac66176c
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5a43cd
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5c823c
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5c823e
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d48a1
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4918
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d494d
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4959
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4974
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d49c5
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d49d8
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4a8c
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4af2
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4b41
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad25028b
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad250307
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad250369
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad25036c
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad25039e
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad25045b
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e05c0
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5cfff1
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d001f
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d4ffb
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d5004
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d50a7
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d5102
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d5109
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d51db
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5d51f5
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2ee101
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5e0118
-     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _start
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6b13
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6b3e
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6b79
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6d50
-     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2b6f55
-     0.01%     0.01%  grid_bfs  libc.so.6             [.] __GI___libc_write
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5df833
-     0.01%     0.01%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_fixup
-     0.01%     0.01%  grid_bfs  libc.so.6             [.] _int_free_merge_chunk
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3d29ca
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5dd79a
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfdffe9
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad0cd616
-     0.01%     0.01%  grid_bfs  grid_bfs              [.] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
-     0.01%     0.01%  grid_bfs  libc.so.6             [.] _int_free
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3d28ff
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5db258
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfc04ad
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad0bbc3b
-     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] __GI___read_nocancel
-     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_init
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3d1c8f
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5daf00
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfb8696
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad0b115e
-     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] call_init.part.0
-     0.01%     0.01%  grid_bfs  grid_bfs              [.] summarize_heatmap(std::vector<int, std::allocator<int> > const&, int, int)
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac42b7a1
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac581246
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5de736
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac94d8bd
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad0c62ac
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad0cd584
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2596ce
-     0.01%     0.00%  grid_bfs  grid_bfs              [.] print_summary(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RunSummary const&, HeatmapSummary const&, CongestionSummary const&, int, double)
-     0.01%     0.00%  grid_bfs  libstdc++.so.6.0.33   [.] 0x00007f18f5a0f50c
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac2069cd
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac42acdc
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac55c226
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fd5fc
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac97e004
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad0bce1e
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad0c3088
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad24e0c6
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e5870
-     0.01%     0.00%  grid_bfs  libstdc++.so.6.0.33   [.] std::ios_base_library_init()
-     0.01%     0.00%  grid_bfs  libstdc++.so.6.0.33   [.] std::ostream::put(char)
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac420733
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac42b75f
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac54b07f
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5de897
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5deeec
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5def49
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fd4e7
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac68d9f9
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac97d82c
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfb54a6
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad0bccc6
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad24df5e
-     0.01%     0.00%  grid_bfs  libc.so.6             [.] _IO_file_overflow@@GLIBC_2.2.5
-     0.01%     0.00%  grid_bfs  libstdc++.so.6.0.33   [.] std::basic_ios<char, std::char_traits<char> >::init(std::basic_streambuf<char, std::char_traits<char> >*)
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac3d25c0
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac4206aa
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac429226
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac54addd
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac582193
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5821d5
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5c8233
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5da6cc
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5de5f4
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5de7d8
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5de81c
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5dee70
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5f9d1b
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac5fc97f
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac611e1b
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac669747
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac669999
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac669a0a
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac68d947
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffac9671ce
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfa9216
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffacfb2528
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2553de
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad257c34
-     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] 0xffffffffad2e186c
-     0.01%     0.00%  grid_bfs  grid_bfs              [.] format_route_label[abi:cxx11](RouteRequest const&, int)
-     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_runtime_resolve_xsavec
-     0.01%     0.00%  grid_bfs  libc.so.6             [.] _IO_do_write@@GLIBC_2.2.5
-     0.01%     0.00%  grid_bfs  [overlay]             [k] 0xffffffffc0967e05
+     0.25%     0.23%  grid_bfs  libc.so.6              [.] __memset_zva64
+     0.06%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0t_64_sync
+     0.06%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0t_64_sync_handler
+     0.04%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_mem_abort
+     0.04%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_page_fault
+     0.04%     0.00%  grid_bfs  [kernel.kallsyms]      [k] handle_mm_fault
+     0.04%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __handle_mm_fault
+     0.04%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0_da
+     0.04%     0.00%  grid_bfs  [kernel.kallsyms]      [k] handle_pte_fault
+     0.04%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _start
+     0.03%     0.00%  grid_bfs  grid_bfs               [.] format_route_label[abi:cxx11](RouteRequest const&, int)
+     0.03%     0.00%  grid_bfs  libc.so.6              [.] cfree@GLIBC_2.17
+     0.03%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_start
+     0.02%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_sysdep_start
+     0.02%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] dl_main
+     0.02%     0.01%  grid_bfs  grid_bfs               [.] generate_grid[abi:cxx11](int, int)
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_wp_page
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] wp_page_copy
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_translation_fault
+     0.02%     0.01%  grid_bfs  [kernel.kallsyms]      [k] mod_memcg_lruvec_state
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __lruvec_stat_mod_folio
+     0.02%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_relocate_object
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0_svc
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_el0_svc
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el0_svc_common.constprop.0
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] invoke_syscall
+     0.02%     0.02%  grid_bfs  grid_bfs               [.] std::__cxx11::to_string(int)
+     0.02%     0.02%  grid_bfs  [kernel.kallsyms]      [k] vm_normal_page
+     0.02%     0.00%  grid_bfs  libc.so.6              [.] __munmap
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __arm64_sys_munmap
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __vm_munmap
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_vmi_munmap
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_vmi_align_munmap
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] vms_complete_munmap_vmas
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] vms_clear_ptes
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] unmap_vmas
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] unmap_single_vma.isra.0
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] unmap_page_range
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] zap_pmd_range.isra.0
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]      [k] zap_pte_range
+     0.02%     0.02%  grid_bfs  libc.so.6              [.] __memcpy_sve
+     0.02%     0.00%  grid_bfs  grid_bfs               [.] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) [clone .isra.0]
+     0.02%     0.02%  grid_bfs  grid_bfs               [.] summarize_heatmap(std::vector<int, std::allocator<int> > const&, int, int)
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]      [k] ptep_clear_flush
+     0.01%     0.01%  grid_bfs  libc.so.6              [.] _int_free
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_anonymous_page
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] folio_add_new_anon_rmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __folio_mod_stat
+     0.01%     0.01%  grid_bfs  grid_bfs               [.] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+     0.01%     0.00%  grid_bfs  grid_bfs               [.] int std::uniform_int_distribution<int>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>::param_type const&) [clone .isra.0]
+     0.01%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_init
+     0.01%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] call_init
+     0.01%     0.00%  grid_bfs  libstdc++.so.6.0.33    [.] 0x0000ecc0ef295a60
+     0.01%     0.00%  grid_bfs  libstdc++.so.6.0.33    [.] std::ios_base_library_init()
+     0.01%     0.01%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_lookup_symbol_x
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]      [k] __pi_clear_page
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] vma_alloc_folio_noprof
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] folio_alloc_mpol_noprof
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] alloc_pages_mpol
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __alloc_frozen_pages_noprof
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] get_page_from_freelist
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]      [k] memcg_rstat_updated.part.0
+     0.01%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_map_object_deps
+     0.01%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_catch_exception
+     0.01%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] openaux
+     0.01%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_map_object
+     0.01%     0.00%  grid_bfs  ld-linux-aarch64.so.1  [.] _dl_map_object_from_fd
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_fault
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_read_fault
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] filemap_map_pages
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] set_pte_range
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]      [k] folio_add_file_rmap_ptes
+     0.00%     0.00%  grid_bfs  [unknown]              [k] 0x0000eaa00afade0c
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __arm64_sys_execve
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] do_execveat_common.isra.0
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] bprm_execve
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] bprm_execve.part.0
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] exec_binprm
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] load_elf_binary
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __thp_vma_allowable_orders
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] __arch_clear_user
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el1h_64_sync
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el1h_64_sync_handler
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] el1_abort
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] get_old_pud
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] setup_arg_pages
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] relocate_vma_down
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]      [k] flush_signal_handlers
+     0.00%     0.00%  perf-exe  [unknown]              [k] 0x0000eaa00afade0c
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0t_64_sync
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0t_64_sync_handler
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0_svc
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] do_el0_svc
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el0_svc_common.constprop.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] invoke_syscall
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] __arm64_sys_execve
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] do_execveat_common.isra.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] bprm_execve
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] bprm_execve.part.0
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] exec_binprm
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] load_elf_binary
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] begin_new_exec
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_event_exec
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] perf_event_enable_on_exec
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] handle_softirqs
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el1h_64_irq
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el1h_64_irq_handler
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] el1_interrupt
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] irq_exit_rcu
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] __irq_exit_rcu
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] do_softirq_own_stack
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] call_on_irq_stack
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] ____do_softirq
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] __do_softirq
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] arch_local_irq_restore
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] rcu_core_si
+     0.00%     0.00%  perf-exe  [kernel.kallsyms]      [k] rcu_core
 
 
 #

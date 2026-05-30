@@ -2,6 +2,8 @@
 
 ## 1. Optimizations Made
 
+to fix memory leak reported by valgrind
+
 Old:
 ```
 int *distance = new int[total];
@@ -13,19 +15,46 @@ New:
 auto distance = std::make_shared<int[]>(total);
 auto visited = std::make_shared<unsigned char[]>(total);
 ```
-to fix memory leak reported by valgrind
+
+modified order of row and column iteration to match row major format of storing to avoid cache thrashing
+
+Old:
+
+```
+for (int pass = 0; pass < congestion_passes; ++pass) {
+        for (int col = 1; col < cols - 1; ++col) {
+            for (int row = 1; row < rows - 1; ++row) {
+```
+
+New:
+
+```
+for (int pass = 0; pass < congestion_passes; ++pass) {
+        for (int row = 1; row < rows - 1; ++row) {
+            for (int col = 1; col < cols - 1; ++col) {
+
+```
+
+inlined the next_pressure_value to avoid millions of function calls -> flamegraph-update1.svg
+time visibly reduced in output from ~1.6s to ~1.3s
+
+Did away with defining distance , visited and frontier inside shortest_path_bfs and instead simply made a vector and passed it by reference, used generation int to avoid the need for zeroing out array after every generation cycle, time reduced further to ~ 0.7s -> flamegraph-after.svg   
+
+
 
 ## 2. Methodology Walkthrough
 
 valgrind reported 2 definitely lost and 2 possibly lost memory leaks all originating directly from shortest_path_bfs function. I noticed that the memory allocated using new was never freed up from the heap, thus decided to use smart pointers instead. Since the ownership wasn't shared, I used unique pointers
 as seen from "valgrind memcheck-before.txt" and "valgrind memcheck-after.txt", all the memory leaks are fixed after this change
-Include before/after evidence from:
+Included -before/-after evidence from:
 
 - `time`
 - `perf stat`
 - FlameGraph
 - Callgrind/KCachegrind
 - Valgrind leak summary
+
+rest of the optimizations described chronologically in step 1, some were overwritten by subsequent optimizations
 
 ## 3. Correctness Evidence
 
@@ -58,5 +87,4 @@ perf works on sampling thus the function calls metrics are not completely accura
 5.1
 address sanitizer detects stack overflows along with heap memory leaks, whereas valgrind memcheck detects just heap memory leaks. the key difference is address sanitizer requires recompiling into a larger binary whereas valgrind memcheck runs any binary and intercepts the calls using just in time compilation and adding memory tracking logic, thus it is slightly slower than addresssanitizer. Therefore we can use address sanitizer to detect memory leaks in canse code is recompilable or else if we just have the compiled binary, we can use valgrind memcheck.
 6.1
-
-
+there was slight difference between time by various tools, but its expected since all tools use different methods and have different overheads for recording execution times
