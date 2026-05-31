@@ -1,0 +1,1370 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 456  of event 'cycles:P'
+# Event count (approx.): 281529036
+#
+# Children      Self  Command  Shared Object          Symbol                                                                                                 
+# ........  ........  .......  .....................  .......................................................................................................
+#
+    99.48%     0.00%  main     main                   [.] _start
+            |
+            ---_start
+               __libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
+               |          
+               |--6.30%--__memset_zva64
+               |          |          
+               |           --5.45%--el0t_64_sync
+               |                     el0t_64_sync_handler
+               |                     el0_da
+               |                     |          
+               |                      --5.00%--do_mem_abort
+               |                                do_translation_fault
+               |                                do_page_fault
+               |                                handle_mm_fault
+               |                                __handle_mm_fault
+               |                                handle_pte_fault
+               |                                |          
+               |                                 --4.79%--do_anonymous_page
+               |                                           |          
+               |                                           |--3.31%--alloc_anon_folio
+               |                                           |          |          
+               |                                           |          |--2.66%--vma_alloc_zeroed_movable_folio
+               |                                           |          |          vma_alloc_folio_noprof
+               |                                           |          |          folio_alloc_mpol_noprof
+               |                                           |          |          alloc_pages_mpol
+               |                                           |          |          |          
+               |                                           |          |           --2.44%--__alloc_frozen_pages_noprof
+               |                                           |          |                     |          
+               |                                           |          |                      --2.23%--get_page_from_freelist
+               |                                           |          |                                |          
+               |                                           |          |                                 --1.77%--__pi_clear_page
+               |                                           |          |          
+               |                                           |           --0.65%--__mem_cgroup_charge
+               |                                           |          
+               |                                            --0.82%--folio_add_lru_vma
+               |                                                      folio_add_lru
+               |                                                      __folio_batch_add_and_move
+               |                                                      folio_batch_move_lru
+               |          
+               |--5.28%--getvals(int, int, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&)
+               |          
+               |--2.53%--cfree@GLIBC_2.17
+               |          __munmap
+               |          el0t_64_sync
+               |          el0t_64_sync_handler
+               |          el0_svc
+               |          do_el0_svc
+               |          el0_svc_common.constprop.0
+               |          invoke_syscall
+               |          __arm64_sys_munmap
+               |          __vm_munmap
+               |          do_vmi_munmap
+               |          do_vmi_align_munmap
+               |          vms_complete_munmap_vmas
+               |          vms_clear_ptes
+               |          |          
+               |          |--1.84%--tlb_finish_mmu
+               |          |          __tlb_batch_free_encoded_pages
+               |          |          free_pages_and_swap_cache
+               |          |          folios_put_refs
+               |          |          
+               |           --0.69%--unmap_vmas
+               |                     unmap_single_vma.isra.0
+               |                     unmap_page_range
+               |                     zap_pmd_range.isra.0
+               |                     zap_pte_range
+               |          
+                --1.20%--el0t_64_sync
+                          el0t_64_sync_handler
+                          el0_da
+                          do_mem_abort
+                          do_translation_fault
+                          do_page_fault
+                          handle_mm_fault
+                          __handle_mm_fault
+                          |          
+                           --1.02%--handle_pte_fault
+                                     do_anonymous_page
+                                     |          
+                                      --0.68%--alloc_anon_folio
+                                                vma_alloc_zeroed_movable_folio
+                                                vma_alloc_folio_noprof
+                                                folio_alloc_mpol_noprof
+                                                alloc_pages_mpol
+                                                __alloc_frozen_pages_noprof
+                                                get_page_from_freelist
+                                                __pi_clear_page
+
+    99.48%     0.00%  main     libc.so.6              [.] __libc_start_main@@GLIBC_2.34
+            |
+            ---__libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
+               |          
+               |--6.30%--__memset_zva64
+               |          |          
+               |           --5.45%--el0t_64_sync
+               |                     el0t_64_sync_handler
+               |                     el0_da
+               |                     |          
+               |                      --5.00%--do_mem_abort
+               |                                do_translation_fault
+               |                                do_page_fault
+               |                                handle_mm_fault
+               |                                __handle_mm_fault
+               |                                handle_pte_fault
+               |                                |          
+               |                                 --4.79%--do_anonymous_page
+               |                                           |          
+               |                                           |--3.31%--alloc_anon_folio
+               |                                           |          |          
+               |                                           |          |--2.66%--vma_alloc_zeroed_movable_folio
+               |                                           |          |          vma_alloc_folio_noprof
+               |                                           |          |          folio_alloc_mpol_noprof
+               |                                           |          |          alloc_pages_mpol
+               |                                           |          |          |          
+               |                                           |          |           --2.44%--__alloc_frozen_pages_noprof
+               |                                           |          |                     |          
+               |                                           |          |                      --2.23%--get_page_from_freelist
+               |                                           |          |                                |          
+               |                                           |          |                                 --1.77%--__pi_clear_page
+               |                                           |          |          
+               |                                           |           --0.65%--__mem_cgroup_charge
+               |                                           |          
+               |                                            --0.82%--folio_add_lru_vma
+               |                                                      folio_add_lru
+               |                                                      __folio_batch_add_and_move
+               |                                                      folio_batch_move_lru
+               |          
+               |--5.28%--getvals(int, int, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&)
+               |          
+               |--2.53%--cfree@GLIBC_2.17
+               |          __munmap
+               |          el0t_64_sync
+               |          el0t_64_sync_handler
+               |          el0_svc
+               |          do_el0_svc
+               |          el0_svc_common.constprop.0
+               |          invoke_syscall
+               |          __arm64_sys_munmap
+               |          __vm_munmap
+               |          do_vmi_munmap
+               |          do_vmi_align_munmap
+               |          vms_complete_munmap_vmas
+               |          vms_clear_ptes
+               |          |          
+               |          |--1.84%--tlb_finish_mmu
+               |          |          __tlb_batch_free_encoded_pages
+               |          |          free_pages_and_swap_cache
+               |          |          folios_put_refs
+               |          |          
+               |           --0.69%--unmap_vmas
+               |                     unmap_single_vma.isra.0
+               |                     unmap_page_range
+               |                     zap_pmd_range.isra.0
+               |                     zap_pte_range
+               |          
+                --1.20%--el0t_64_sync
+                          el0t_64_sync_handler
+                          el0_da
+                          do_mem_abort
+                          do_translation_fault
+                          do_page_fault
+                          handle_mm_fault
+                          __handle_mm_fault
+                          |          
+                           --1.02%--handle_pte_fault
+                                     do_anonymous_page
+                                     |          
+                                      --0.68%--alloc_anon_folio
+                                                vma_alloc_zeroed_movable_folio
+                                                vma_alloc_folio_noprof
+                                                folio_alloc_mpol_noprof
+                                                alloc_pages_mpol
+                                                __alloc_frozen_pages_noprof
+                                                get_page_from_freelist
+                                                __pi_clear_page
+
+    99.48%     0.00%  main     libc.so.6              [.] __libc_start_call_main
+            |
+            ---__libc_start_call_main
+               main
+               |          
+               |--6.30%--__memset_zva64
+               |          |          
+               |           --5.45%--el0t_64_sync
+               |                     el0t_64_sync_handler
+               |                     el0_da
+               |                     |          
+               |                      --5.00%--do_mem_abort
+               |                                do_translation_fault
+               |                                do_page_fault
+               |                                handle_mm_fault
+               |                                __handle_mm_fault
+               |                                handle_pte_fault
+               |                                |          
+               |                                 --4.79%--do_anonymous_page
+               |                                           |          
+               |                                           |--3.31%--alloc_anon_folio
+               |                                           |          |          
+               |                                           |          |--2.66%--vma_alloc_zeroed_movable_folio
+               |                                           |          |          vma_alloc_folio_noprof
+               |                                           |          |          folio_alloc_mpol_noprof
+               |                                           |          |          alloc_pages_mpol
+               |                                           |          |          |          
+               |                                           |          |           --2.44%--__alloc_frozen_pages_noprof
+               |                                           |          |                     |          
+               |                                           |          |                      --2.23%--get_page_from_freelist
+               |                                           |          |                                |          
+               |                                           |          |                                 --1.77%--__pi_clear_page
+               |                                           |          |          
+               |                                           |           --0.65%--__mem_cgroup_charge
+               |                                           |          
+               |                                            --0.82%--folio_add_lru_vma
+               |                                                      folio_add_lru
+               |                                                      __folio_batch_add_and_move
+               |                                                      folio_batch_move_lru
+               |          
+               |--5.28%--getvals(int, int, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&)
+               |          
+               |--2.53%--cfree@GLIBC_2.17
+               |          __munmap
+               |          el0t_64_sync
+               |          el0t_64_sync_handler
+               |          el0_svc
+               |          do_el0_svc
+               |          el0_svc_common.constprop.0
+               |          invoke_syscall
+               |          __arm64_sys_munmap
+               |          __vm_munmap
+               |          do_vmi_munmap
+               |          do_vmi_align_munmap
+               |          vms_complete_munmap_vmas
+               |          vms_clear_ptes
+               |          |          
+               |          |--1.84%--tlb_finish_mmu
+               |          |          __tlb_batch_free_encoded_pages
+               |          |          free_pages_and_swap_cache
+               |          |          folios_put_refs
+               |          |          
+               |           --0.69%--unmap_vmas
+               |                     unmap_single_vma.isra.0
+               |                     unmap_page_range
+               |                     zap_pmd_range.isra.0
+               |                     zap_pte_range
+               |          
+                --1.20%--el0t_64_sync
+                          el0t_64_sync_handler
+                          el0_da
+                          do_mem_abort
+                          do_translation_fault
+                          do_page_fault
+                          handle_mm_fault
+                          __handle_mm_fault
+                          |          
+                           --1.02%--handle_pte_fault
+                                     do_anonymous_page
+                                     |          
+                                      --0.68%--alloc_anon_folio
+                                                vma_alloc_zeroed_movable_folio
+                                                vma_alloc_folio_noprof
+                                                folio_alloc_mpol_noprof
+                                                alloc_pages_mpol
+                                                __alloc_frozen_pages_noprof
+                                                get_page_from_freelist
+                                                __pi_clear_page
+
+    99.48%    83.53%  main     main                   [.] main
+            |          
+            |--83.53%--_start
+            |          __libc_start_main@@GLIBC_2.34
+            |          __libc_start_call_main
+            |          main
+            |          
+             --15.94%--main
+                       |          
+                       |--6.30%--__memset_zva64
+                       |          |          
+                       |           --5.45%--el0t_64_sync
+                       |                     el0t_64_sync_handler
+                       |                     el0_da
+                       |                     |          
+                       |                      --5.00%--do_mem_abort
+                       |                                do_translation_fault
+                       |                                do_page_fault
+                       |                                handle_mm_fault
+                       |                                __handle_mm_fault
+                       |                                handle_pte_fault
+                       |                                |          
+                       |                                 --4.79%--do_anonymous_page
+                       |                                           |          
+                       |                                           |--3.31%--alloc_anon_folio
+                       |                                           |          |          
+                       |                                           |          |--2.66%--vma_alloc_zeroed_movable_folio
+                       |                                           |          |          vma_alloc_folio_noprof
+                       |                                           |          |          folio_alloc_mpol_noprof
+                       |                                           |          |          alloc_pages_mpol
+                       |                                           |          |          |          
+                       |                                           |          |           --2.44%--__alloc_frozen_pages_noprof
+                       |                                           |          |                     |          
+                       |                                           |          |                      --2.23%--get_page_from_freelist
+                       |                                           |          |                                |          
+                       |                                           |          |                                 --1.77%--__pi_clear_page
+                       |                                           |          |          
+                       |                                           |           --0.65%--__mem_cgroup_charge
+                       |                                           |          
+                       |                                            --0.82%--folio_add_lru_vma
+                       |                                                      folio_add_lru
+                       |                                                      __folio_batch_add_and_move
+                       |                                                      folio_batch_move_lru
+                       |          
+                       |--5.28%--getvals(int, int, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&)
+                       |          
+                       |--2.53%--cfree@GLIBC_2.17
+                       |          __munmap
+                       |          el0t_64_sync
+                       |          el0t_64_sync_handler
+                       |          el0_svc
+                       |          do_el0_svc
+                       |          el0_svc_common.constprop.0
+                       |          invoke_syscall
+                       |          __arm64_sys_munmap
+                       |          __vm_munmap
+                       |          do_vmi_munmap
+                       |          do_vmi_align_munmap
+                       |          vms_complete_munmap_vmas
+                       |          vms_clear_ptes
+                       |          |          
+                       |          |--1.84%--tlb_finish_mmu
+                       |          |          __tlb_batch_free_encoded_pages
+                       |          |          free_pages_and_swap_cache
+                       |          |          folios_put_refs
+                       |          |          
+                       |           --0.69%--unmap_vmas
+                       |                     unmap_single_vma.isra.0
+                       |                     unmap_page_range
+                       |                     zap_pmd_range.isra.0
+                       |                     zap_pte_range
+                       |          
+                        --1.20%--el0t_64_sync
+                                  el0t_64_sync_handler
+                                  el0_da
+                                  do_mem_abort
+                                  do_translation_fault
+                                  do_page_fault
+                                  handle_mm_fault
+                                  __handle_mm_fault
+                                  |          
+                                   --1.02%--handle_pte_fault
+                                             do_anonymous_page
+                                             |          
+                                              --0.68%--alloc_anon_folio
+                                                        vma_alloc_zeroed_movable_folio
+                                                        vma_alloc_folio_noprof
+                                                        folio_alloc_mpol_noprof
+                                                        alloc_pages_mpol
+                                                        __alloc_frozen_pages_noprof
+                                                        get_page_from_freelist
+                                                        __pi_clear_page
+
+     9.95%     0.00%  main     [kernel.kallsyms]      [k] el0t_64_sync
+            |
+            ---el0t_64_sync
+               el0t_64_sync_handler
+               |          
+               |--7.37%--el0_da
+               |          |          
+               |           --6.92%--do_mem_abort
+               |                     do_translation_fault
+               |                     do_page_fault
+               |                     handle_mm_fault
+               |                     |          
+               |                      --6.84%--__handle_mm_fault
+               |                                |          
+               |                                 --6.66%--handle_pte_fault
+               |                                           |          
+               |                                            --6.45%--do_anonymous_page
+               |                                                      |          
+               |                                                      |--4.64%--alloc_anon_folio
+               |                                                      |          |          
+               |                                                      |          |--3.99%--vma_alloc_zeroed_movable_folio
+               |                                                      |          |          vma_alloc_folio_noprof
+               |                                                      |          |          folio_alloc_mpol_noprof
+               |                                                      |          |          alloc_pages_mpol
+               |                                                      |          |          |          
+               |                                                      |          |           --3.77%--__alloc_frozen_pages_noprof
+               |                                                      |          |                     |          
+               |                                                      |          |                      --3.56%--get_page_from_freelist
+               |                                                      |          |                                |          
+               |                                                      |          |                                 --3.10%--__pi_clear_page
+               |                                                      |          |          
+               |                                                      |           --0.65%--__mem_cgroup_charge
+               |                                                      |          
+               |                                                       --0.97%--folio_add_lru_vma
+               |                                                                 folio_add_lru
+               |                                                                 __folio_batch_add_and_move
+               |                                                                 folio_batch_move_lru
+               |          
+                --2.55%--el0_svc
+                          do_el0_svc
+                          el0_svc_common.constprop.0
+                          invoke_syscall
+                          |          
+                           --2.53%--__arm64_sys_munmap
+                                     __vm_munmap
+                                     do_vmi_munmap
+                                     do_vmi_align_munmap
+                                     vms_complete_munmap_vmas
+                                     vms_clear_ptes
+                                     |          
+                                     |--1.84%--tlb_finish_mmu
+                                     |          __tlb_batch_free_encoded_pages
+                                     |          free_pages_and_swap_cache
+                                     |          folios_put_refs
+                                     |          
+                                      --0.69%--unmap_vmas
+                                                unmap_single_vma.isra.0
+                                                unmap_page_range
+                                                zap_pmd_range.isra.0
+                                                zap_pte_range
+
+     9.95%     0.00%  main     [kernel.kallsyms]      [k] el0t_64_sync_handler
+            |
+            ---el0t_64_sync_handler
+               |          
+               |--7.37%--el0_da
+               |          |          
+               |           --6.92%--do_mem_abort
+               |                     do_translation_fault
+               |                     do_page_fault
+               |                     handle_mm_fault
+               |                     |          
+               |                      --6.84%--__handle_mm_fault
+               |                                |          
+               |                                 --6.66%--handle_pte_fault
+               |                                           |          
+               |                                            --6.45%--do_anonymous_page
+               |                                                      |          
+               |                                                      |--4.64%--alloc_anon_folio
+               |                                                      |          |          
+               |                                                      |          |--3.99%--vma_alloc_zeroed_movable_folio
+               |                                                      |          |          vma_alloc_folio_noprof
+               |                                                      |          |          folio_alloc_mpol_noprof
+               |                                                      |          |          alloc_pages_mpol
+               |                                                      |          |          |          
+               |                                                      |          |           --3.77%--__alloc_frozen_pages_noprof
+               |                                                      |          |                     |          
+               |                                                      |          |                      --3.56%--get_page_from_freelist
+               |                                                      |          |                                |          
+               |                                                      |          |                                 --3.10%--__pi_clear_page
+               |                                                      |          |          
+               |                                                      |           --0.65%--__mem_cgroup_charge
+               |                                                      |          
+               |                                                       --0.97%--folio_add_lru_vma
+               |                                                                 folio_add_lru
+               |                                                                 __folio_batch_add_and_move
+               |                                                                 folio_batch_move_lru
+               |          
+                --2.55%--el0_svc
+                          do_el0_svc
+                          el0_svc_common.constprop.0
+                          invoke_syscall
+                          |          
+                           --2.53%--__arm64_sys_munmap
+                                     __vm_munmap
+                                     do_vmi_munmap
+                                     do_vmi_align_munmap
+                                     vms_complete_munmap_vmas
+                                     vms_clear_ptes
+                                     |          
+                                     |--1.84%--tlb_finish_mmu
+                                     |          __tlb_batch_free_encoded_pages
+                                     |          free_pages_and_swap_cache
+                                     |          folios_put_refs
+                                     |          
+                                      --0.69%--unmap_vmas
+                                                unmap_single_vma.isra.0
+                                                unmap_page_range
+                                                zap_pmd_range.isra.0
+                                                zap_pte_range
+
+     7.37%     0.45%  main     [kernel.kallsyms]      [k] el0_da
+            |          
+             --6.92%--el0_da
+                       do_mem_abort
+                       do_translation_fault
+                       do_page_fault
+                       handle_mm_fault
+                       |          
+                        --6.84%--__handle_mm_fault
+                                  |          
+                                   --6.66%--handle_pte_fault
+                                             |          
+                                              --6.45%--do_anonymous_page
+                                                        |          
+                                                        |--4.64%--alloc_anon_folio
+                                                        |          |          
+                                                        |          |--3.99%--vma_alloc_zeroed_movable_folio
+                                                        |          |          vma_alloc_folio_noprof
+                                                        |          |          folio_alloc_mpol_noprof
+                                                        |          |          alloc_pages_mpol
+                                                        |          |          |          
+                                                        |          |           --3.77%--__alloc_frozen_pages_noprof
+                                                        |          |                     |          
+                                                        |          |                      --3.56%--get_page_from_freelist
+                                                        |          |                                |          
+                                                        |          |                                 --3.10%--__pi_clear_page
+                                                        |          |          
+                                                        |           --0.65%--__mem_cgroup_charge
+                                                        |          
+                                                         --0.97%--folio_add_lru_vma
+                                                                   folio_add_lru
+                                                                   __folio_batch_add_and_move
+                                                                   folio_batch_move_lru
+
+     6.95%     0.07%  main     [kernel.kallsyms]      [k] handle_mm_fault
+            |          
+             --6.88%--handle_mm_fault
+                       __handle_mm_fault
+                       |          
+                        --6.70%--handle_pte_fault
+                                  |          
+                                   --6.45%--do_anonymous_page
+                                             |          
+                                             |--4.64%--alloc_anon_folio
+                                             |          |          
+                                             |          |--3.99%--vma_alloc_zeroed_movable_folio
+                                             |          |          vma_alloc_folio_noprof
+                                             |          |          folio_alloc_mpol_noprof
+                                             |          |          alloc_pages_mpol
+                                             |          |          |          
+                                             |          |           --3.77%--__alloc_frozen_pages_noprof
+                                             |          |                     |          
+                                             |          |                      --3.56%--get_page_from_freelist
+                                             |          |                                |          
+                                             |          |                                 --3.10%--__pi_clear_page
+                                             |          |          
+                                             |           --0.65%--__mem_cgroup_charge
+                                             |          
+                                              --0.97%--folio_add_lru_vma
+                                                        folio_add_lru
+                                                        __folio_batch_add_and_move
+                                                        folio_batch_move_lru
+
+     6.95%     0.00%  main     [kernel.kallsyms]      [k] do_mem_abort
+            |
+            ---do_mem_abort
+               do_translation_fault
+               do_page_fault
+               handle_mm_fault
+               |          
+                --6.88%--__handle_mm_fault
+                          |          
+                           --6.70%--handle_pte_fault
+                                     |          
+                                      --6.45%--do_anonymous_page
+                                                |          
+                                                |--4.64%--alloc_anon_folio
+                                                |          |          
+                                                |          |--3.99%--vma_alloc_zeroed_movable_folio
+                                                |          |          vma_alloc_folio_noprof
+                                                |          |          folio_alloc_mpol_noprof
+                                                |          |          alloc_pages_mpol
+                                                |          |          |          
+                                                |          |           --3.77%--__alloc_frozen_pages_noprof
+                                                |          |                     |          
+                                                |          |                      --3.56%--get_page_from_freelist
+                                                |          |                                |          
+                                                |          |                                 --3.10%--__pi_clear_page
+                                                |          |          
+                                                |           --0.65%--__mem_cgroup_charge
+                                                |          
+                                                 --0.97%--folio_add_lru_vma
+                                                           folio_add_lru
+                                                           __folio_batch_add_and_move
+                                                           folio_batch_move_lru
+
+     6.95%     0.00%  main     [kernel.kallsyms]      [k] do_translation_fault
+            |
+            ---do_translation_fault
+               do_page_fault
+               handle_mm_fault
+               |          
+                --6.88%--__handle_mm_fault
+                          |          
+                           --6.70%--handle_pte_fault
+                                     |          
+                                      --6.45%--do_anonymous_page
+                                                |          
+                                                |--4.64%--alloc_anon_folio
+                                                |          |          
+                                                |          |--3.99%--vma_alloc_zeroed_movable_folio
+                                                |          |          vma_alloc_folio_noprof
+                                                |          |          folio_alloc_mpol_noprof
+                                                |          |          alloc_pages_mpol
+                                                |          |          |          
+                                                |          |           --3.77%--__alloc_frozen_pages_noprof
+                                                |          |                     |          
+                                                |          |                      --3.56%--get_page_from_freelist
+                                                |          |                                |          
+                                                |          |                                 --3.10%--__pi_clear_page
+                                                |          |          
+                                                |           --0.65%--__mem_cgroup_charge
+                                                |          
+                                                 --0.97%--folio_add_lru_vma
+                                                           folio_add_lru
+                                                           __folio_batch_add_and_move
+                                                           folio_batch_move_lru
+
+     6.95%     0.00%  main     [kernel.kallsyms]      [k] do_page_fault
+            |
+            ---do_page_fault
+               handle_mm_fault
+               |          
+                --6.88%--__handle_mm_fault
+                          |          
+                           --6.70%--handle_pte_fault
+                                     |          
+                                      --6.45%--do_anonymous_page
+                                                |          
+                                                |--4.64%--alloc_anon_folio
+                                                |          |          
+                                                |          |--3.99%--vma_alloc_zeroed_movable_folio
+                                                |          |          vma_alloc_folio_noprof
+                                                |          |          folio_alloc_mpol_noprof
+                                                |          |          alloc_pages_mpol
+                                                |          |          |          
+                                                |          |           --3.77%--__alloc_frozen_pages_noprof
+                                                |          |                     |          
+                                                |          |                      --3.56%--get_page_from_freelist
+                                                |          |                                |          
+                                                |          |                                 --3.10%--__pi_clear_page
+                                                |          |          
+                                                |           --0.65%--__mem_cgroup_charge
+                                                |          
+                                                 --0.97%--folio_add_lru_vma
+                                                           folio_add_lru
+                                                           __folio_batch_add_and_move
+                                                           folio_batch_move_lru
+
+     6.95%     0.85%  main     libc.so.6              [.] __memset_zva64
+            |          
+            |--6.10%--__memset_zva64
+            |          el0t_64_sync
+            |          el0t_64_sync_handler
+            |          el0_da
+            |          |          
+            |           --5.64%--do_mem_abort
+            |                     do_translation_fault
+            |                     do_page_fault
+            |                     handle_mm_fault
+            |                     __handle_mm_fault
+            |                     handle_pte_fault
+            |                     |          
+            |                      --5.44%--do_anonymous_page
+            |                                |          
+            |                                |--3.96%--alloc_anon_folio
+            |                                |          |          
+            |                                |          |--3.31%--vma_alloc_zeroed_movable_folio
+            |                                |          |          vma_alloc_folio_noprof
+            |                                |          |          folio_alloc_mpol_noprof
+            |                                |          |          alloc_pages_mpol
+            |                                |          |          |          
+            |                                |          |           --3.09%--__alloc_frozen_pages_noprof
+            |                                |          |                     |          
+            |                                |          |                      --2.88%--get_page_from_freelist
+            |                                |          |                                |          
+            |                                |          |                                 --2.42%--__pi_clear_page
+            |                                |          |          
+            |                                |           --0.65%--__mem_cgroup_charge
+            |                                |          
+            |                                 --0.82%--folio_add_lru_vma
+            |                                           folio_add_lru
+            |                                           __folio_batch_add_and_move
+            |                                           folio_batch_move_lru
+            |          
+             --0.85%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       __memset_zva64
+
+     6.88%     0.18%  main     [kernel.kallsyms]      [k] __handle_mm_fault
+            |          
+             --6.70%--__handle_mm_fault
+                       handle_pte_fault
+                       |          
+                        --6.45%--do_anonymous_page
+                                  |          
+                                  |--4.64%--alloc_anon_folio
+                                  |          |          
+                                  |          |--3.99%--vma_alloc_zeroed_movable_folio
+                                  |          |          vma_alloc_folio_noprof
+                                  |          |          folio_alloc_mpol_noprof
+                                  |          |          alloc_pages_mpol
+                                  |          |          |          
+                                  |          |           --3.77%--__alloc_frozen_pages_noprof
+                                  |          |                     |          
+                                  |          |                      --3.56%--get_page_from_freelist
+                                  |          |                                |          
+                                  |          |                                 --3.10%--__pi_clear_page
+                                  |          |          
+                                  |           --0.65%--__mem_cgroup_charge
+                                  |          
+                                   --0.97%--folio_add_lru_vma
+                                             folio_add_lru
+                                             __folio_batch_add_and_move
+                                             folio_batch_move_lru
+
+     6.70%     0.00%  main     [kernel.kallsyms]      [k] handle_pte_fault
+            |
+            ---handle_pte_fault
+               |          
+                --6.45%--do_anonymous_page
+                          |          
+                          |--4.64%--alloc_anon_folio
+                          |          |          
+                          |          |--3.99%--vma_alloc_zeroed_movable_folio
+                          |          |          vma_alloc_folio_noprof
+                          |          |          folio_alloc_mpol_noprof
+                          |          |          alloc_pages_mpol
+                          |          |          |          
+                          |          |           --3.77%--__alloc_frozen_pages_noprof
+                          |          |                     |          
+                          |          |                      --3.56%--get_page_from_freelist
+                          |          |                                |          
+                          |          |                                 --3.10%--__pi_clear_page
+                          |          |          
+                          |           --0.65%--__mem_cgroup_charge
+                          |          
+                           --0.97%--folio_add_lru_vma
+                                     folio_add_lru
+                                     __folio_batch_add_and_move
+                                     folio_batch_move_lru
+
+     6.45%     0.00%  main     [kernel.kallsyms]      [k] do_anonymous_page
+            |
+            ---do_anonymous_page
+               |          
+               |--4.64%--alloc_anon_folio
+               |          |          
+               |          |--3.99%--vma_alloc_zeroed_movable_folio
+               |          |          vma_alloc_folio_noprof
+               |          |          folio_alloc_mpol_noprof
+               |          |          alloc_pages_mpol
+               |          |          |          
+               |          |           --3.77%--__alloc_frozen_pages_noprof
+               |          |                     |          
+               |          |                      --3.56%--get_page_from_freelist
+               |          |                                |          
+               |          |                                 --3.10%--__pi_clear_page
+               |          |          
+               |           --0.65%--__mem_cgroup_charge
+               |          
+                --0.97%--folio_add_lru_vma
+                          folio_add_lru
+                          __folio_batch_add_and_move
+                          folio_batch_move_lru
+
+     5.28%     5.05%  main     main                   [.] getvals(int, int, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&)
+            |          
+             --5.05%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       getvals(int, int, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&)
+
+     4.64%     0.00%  main     [kernel.kallsyms]      [k] alloc_anon_folio
+            |
+            ---alloc_anon_folio
+               |          
+               |--3.99%--vma_alloc_zeroed_movable_folio
+               |          vma_alloc_folio_noprof
+               |          folio_alloc_mpol_noprof
+               |          alloc_pages_mpol
+               |          |          
+               |           --3.77%--__alloc_frozen_pages_noprof
+               |                     |          
+               |                      --3.56%--get_page_from_freelist
+               |                                |          
+               |                                 --3.10%--__pi_clear_page
+               |          
+                --0.65%--__mem_cgroup_charge
+
+     3.99%     0.22%  main     [kernel.kallsyms]      [k] alloc_pages_mpol
+            |          
+             --3.77%--alloc_pages_mpol
+                       __alloc_frozen_pages_noprof
+                       |          
+                        --3.56%--get_page_from_freelist
+                                  |          
+                                   --3.10%--__pi_clear_page
+
+     3.99%     0.00%  main     [kernel.kallsyms]      [k] vma_alloc_zeroed_movable_folio
+            |
+            ---vma_alloc_zeroed_movable_folio
+               vma_alloc_folio_noprof
+               folio_alloc_mpol_noprof
+               alloc_pages_mpol
+               |          
+                --3.77%--__alloc_frozen_pages_noprof
+                          |          
+                           --3.56%--get_page_from_freelist
+                                     |          
+                                      --3.10%--__pi_clear_page
+
+     3.99%     0.00%  main     [kernel.kallsyms]      [k] vma_alloc_folio_noprof
+            |
+            ---vma_alloc_folio_noprof
+               folio_alloc_mpol_noprof
+               alloc_pages_mpol
+               |          
+                --3.77%--__alloc_frozen_pages_noprof
+                          |          
+                           --3.56%--get_page_from_freelist
+                                     |          
+                                      --3.10%--__pi_clear_page
+
+     3.99%     0.00%  main     [kernel.kallsyms]      [k] folio_alloc_mpol_noprof
+            |
+            ---folio_alloc_mpol_noprof
+               alloc_pages_mpol
+               |          
+                --3.77%--__alloc_frozen_pages_noprof
+                          |          
+                           --3.56%--get_page_from_freelist
+                                     |          
+                                      --3.10%--__pi_clear_page
+
+     3.77%     0.21%  main     [kernel.kallsyms]      [k] __alloc_frozen_pages_noprof
+            |          
+             --3.56%--__alloc_frozen_pages_noprof
+                       get_page_from_freelist
+                       |          
+                        --3.10%--__pi_clear_page
+
+     3.56%     0.22%  main     [kernel.kallsyms]      [k] get_page_from_freelist
+            |          
+             --3.33%--get_page_from_freelist
+                       |          
+                        --3.10%--__pi_clear_page
+
+     3.10%     3.10%  main     [kernel.kallsyms]      [k] __pi_clear_page
+            |
+            ---_start
+               __libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
+               |          
+               |--1.77%--__memset_zva64
+               |          el0t_64_sync
+               |          el0t_64_sync_handler
+               |          el0_da
+               |          do_mem_abort
+               |          do_translation_fault
+               |          do_page_fault
+               |          handle_mm_fault
+               |          __handle_mm_fault
+               |          handle_pte_fault
+               |          do_anonymous_page
+               |          alloc_anon_folio
+               |          vma_alloc_zeroed_movable_folio
+               |          vma_alloc_folio_noprof
+               |          folio_alloc_mpol_noprof
+               |          alloc_pages_mpol
+               |          __alloc_frozen_pages_noprof
+               |          get_page_from_freelist
+               |          __pi_clear_page
+               |          
+                --0.68%--el0t_64_sync
+                          el0t_64_sync_handler
+                          el0_da
+                          do_mem_abort
+                          do_translation_fault
+                          do_page_fault
+                          handle_mm_fault
+                          __handle_mm_fault
+                          handle_pte_fault
+                          do_anonymous_page
+                          alloc_anon_folio
+                          vma_alloc_zeroed_movable_folio
+                          vma_alloc_folio_noprof
+                          folio_alloc_mpol_noprof
+                          alloc_pages_mpol
+                          __alloc_frozen_pages_noprof
+                          get_page_from_freelist
+                          __pi_clear_page
+
+     2.55%     0.00%  main     [kernel.kallsyms]      [k] el0_svc
+            |
+            ---el0_svc
+               do_el0_svc
+               el0_svc_common.constprop.0
+               invoke_syscall
+               |          
+                --2.53%--__arm64_sys_munmap
+                          __vm_munmap
+                          do_vmi_munmap
+                          do_vmi_align_munmap
+                          vms_complete_munmap_vmas
+                          vms_clear_ptes
+                          |          
+                          |--1.84%--tlb_finish_mmu
+                          |          __tlb_batch_free_encoded_pages
+                          |          free_pages_and_swap_cache
+                          |          folios_put_refs
+                          |          
+                           --0.69%--unmap_vmas
+                                     unmap_single_vma.isra.0
+                                     unmap_page_range
+                                     zap_pmd_range.isra.0
+                                     zap_pte_range
+
+     2.55%     0.00%  main     [kernel.kallsyms]      [k] do_el0_svc
+            |
+            ---do_el0_svc
+               el0_svc_common.constprop.0
+               invoke_syscall
+               |          
+                --2.53%--__arm64_sys_munmap
+                          __vm_munmap
+                          do_vmi_munmap
+                          do_vmi_align_munmap
+                          vms_complete_munmap_vmas
+                          vms_clear_ptes
+                          |          
+                          |--1.84%--tlb_finish_mmu
+                          |          __tlb_batch_free_encoded_pages
+                          |          free_pages_and_swap_cache
+                          |          folios_put_refs
+                          |          
+                           --0.69%--unmap_vmas
+                                     unmap_single_vma.isra.0
+                                     unmap_page_range
+                                     zap_pmd_range.isra.0
+                                     zap_pte_range
+
+     2.55%     0.00%  main     [kernel.kallsyms]      [k] el0_svc_common.constprop.0
+            |
+            ---el0_svc_common.constprop.0
+               invoke_syscall
+               |          
+                --2.53%--__arm64_sys_munmap
+                          __vm_munmap
+                          do_vmi_munmap
+                          do_vmi_align_munmap
+                          vms_complete_munmap_vmas
+                          vms_clear_ptes
+                          |          
+                          |--1.84%--tlb_finish_mmu
+                          |          __tlb_batch_free_encoded_pages
+                          |          free_pages_and_swap_cache
+                          |          folios_put_refs
+                          |          
+                           --0.69%--unmap_vmas
+                                     unmap_single_vma.isra.0
+                                     unmap_page_range
+                                     zap_pmd_range.isra.0
+                                     zap_pte_range
+
+     2.55%     0.00%  main     [kernel.kallsyms]      [k] invoke_syscall
+            |
+            ---invoke_syscall
+               |          
+                --2.53%--__arm64_sys_munmap
+                          __vm_munmap
+                          do_vmi_munmap
+                          do_vmi_align_munmap
+                          vms_complete_munmap_vmas
+                          vms_clear_ptes
+                          |          
+                          |--1.84%--tlb_finish_mmu
+                          |          __tlb_batch_free_encoded_pages
+                          |          free_pages_and_swap_cache
+                          |          folios_put_refs
+                          |          
+                           --0.69%--unmap_vmas
+                                     unmap_single_vma.isra.0
+                                     unmap_page_range
+                                     zap_pmd_range.isra.0
+                                     zap_pte_range
+
+     2.53%     0.00%  main     libc.so.6              [.] cfree@GLIBC_2.17
+            |
+            ---cfree@GLIBC_2.17
+               __munmap
+               el0t_64_sync
+               el0t_64_sync_handler
+               el0_svc
+               do_el0_svc
+               el0_svc_common.constprop.0
+               invoke_syscall
+               __arm64_sys_munmap
+               __vm_munmap
+               do_vmi_munmap
+               do_vmi_align_munmap
+               vms_complete_munmap_vmas
+               vms_clear_ptes
+               |          
+               |--1.84%--tlb_finish_mmu
+               |          __tlb_batch_free_encoded_pages
+               |          free_pages_and_swap_cache
+               |          folios_put_refs
+               |          
+                --0.69%--unmap_vmas
+                          unmap_single_vma.isra.0
+                          unmap_page_range
+                          zap_pmd_range.isra.0
+                          zap_pte_range
+
+     2.53%     0.00%  main     libc.so.6              [.] __munmap
+            |
+            ---__munmap
+               el0t_64_sync
+               el0t_64_sync_handler
+               el0_svc
+               do_el0_svc
+               el0_svc_common.constprop.0
+               invoke_syscall
+               __arm64_sys_munmap
+               __vm_munmap
+               do_vmi_munmap
+               do_vmi_align_munmap
+               vms_complete_munmap_vmas
+               vms_clear_ptes
+               |          
+               |--1.84%--tlb_finish_mmu
+               |          __tlb_batch_free_encoded_pages
+               |          free_pages_and_swap_cache
+               |          folios_put_refs
+               |          
+                --0.69%--unmap_vmas
+                          unmap_single_vma.isra.0
+                          unmap_page_range
+                          zap_pmd_range.isra.0
+                          zap_pte_range
+
+     2.53%     0.00%  main     [kernel.kallsyms]      [k] __arm64_sys_munmap
+            |
+            ---__arm64_sys_munmap
+               __vm_munmap
+               do_vmi_munmap
+               do_vmi_align_munmap
+               vms_complete_munmap_vmas
+               vms_clear_ptes
+               |          
+               |--1.84%--tlb_finish_mmu
+               |          __tlb_batch_free_encoded_pages
+               |          free_pages_and_swap_cache
+               |          folios_put_refs
+               |          
+                --0.69%--unmap_vmas
+                          unmap_single_vma.isra.0
+                          unmap_page_range
+                          zap_pmd_range.isra.0
+                          zap_pte_range
+
+     2.53%     0.00%  main     [kernel.kallsyms]      [k] __vm_munmap
+            |
+            ---__vm_munmap
+               do_vmi_munmap
+               do_vmi_align_munmap
+               vms_complete_munmap_vmas
+               vms_clear_ptes
+               |          
+               |--1.84%--tlb_finish_mmu
+               |          __tlb_batch_free_encoded_pages
+               |          free_pages_and_swap_cache
+               |          folios_put_refs
+               |          
+                --0.69%--unmap_vmas
+                          unmap_single_vma.isra.0
+                          unmap_page_range
+                          zap_pmd_range.isra.0
+                          zap_pte_range
+
+     2.53%     0.00%  main     [kernel.kallsyms]      [k] do_vmi_munmap
+            |
+            ---do_vmi_munmap
+               do_vmi_align_munmap
+               vms_complete_munmap_vmas
+               vms_clear_ptes
+               |          
+               |--1.84%--tlb_finish_mmu
+               |          __tlb_batch_free_encoded_pages
+               |          free_pages_and_swap_cache
+               |          folios_put_refs
+               |          
+                --0.69%--unmap_vmas
+                          unmap_single_vma.isra.0
+                          unmap_page_range
+                          zap_pmd_range.isra.0
+                          zap_pte_range
+
+     2.53%     0.00%  main     [kernel.kallsyms]      [k] do_vmi_align_munmap
+            |
+            ---do_vmi_align_munmap
+               vms_complete_munmap_vmas
+               vms_clear_ptes
+               |          
+               |--1.84%--tlb_finish_mmu
+               |          __tlb_batch_free_encoded_pages
+               |          free_pages_and_swap_cache
+               |          folios_put_refs
+               |          
+                --0.69%--unmap_vmas
+                          unmap_single_vma.isra.0
+                          unmap_page_range
+                          zap_pmd_range.isra.0
+                          zap_pte_range
+
+     2.53%     0.00%  main     [kernel.kallsyms]      [k] vms_complete_munmap_vmas
+            |
+            ---vms_complete_munmap_vmas
+               vms_clear_ptes
+               |          
+               |--1.84%--tlb_finish_mmu
+               |          __tlb_batch_free_encoded_pages
+               |          free_pages_and_swap_cache
+               |          folios_put_refs
+               |          
+                --0.69%--unmap_vmas
+                          unmap_single_vma.isra.0
+                          unmap_page_range
+                          zap_pmd_range.isra.0
+                          zap_pte_range
+
+     2.53%     0.00%  main     [kernel.kallsyms]      [k] vms_clear_ptes
+            |
+            ---vms_clear_ptes
+               |          
+               |--1.84%--tlb_finish_mmu
+               |          __tlb_batch_free_encoded_pages
+               |          free_pages_and_swap_cache
+               |          folios_put_refs
+               |          
+                --0.69%--unmap_vmas
+                          unmap_single_vma.isra.0
+                          unmap_page_range
+                          zap_pmd_range.isra.0
+                          zap_pte_range
+
+     1.84%     0.92%  main     [kernel.kallsyms]      [k] folios_put_refs
+            |          
+            |--0.92%--folios_put_refs
+            |          
+             --0.92%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       cfree@GLIBC_2.17
+                       __munmap
+                       el0t_64_sync
+                       el0t_64_sync_handler
+                       el0_svc
+                       do_el0_svc
+                       el0_svc_common.constprop.0
+                       invoke_syscall
+                       __arm64_sys_munmap
+                       __vm_munmap
+                       do_vmi_munmap
+                       do_vmi_align_munmap
+                       vms_complete_munmap_vmas
+                       vms_clear_ptes
+                       tlb_finish_mmu
+                       __tlb_batch_free_encoded_pages
+                       free_pages_and_swap_cache
+                       folios_put_refs
+
+     1.84%     0.00%  main     [kernel.kallsyms]      [k] tlb_finish_mmu
+            |
+            ---tlb_finish_mmu
+               __tlb_batch_free_encoded_pages
+               free_pages_and_swap_cache
+               folios_put_refs
+
+     1.84%     0.00%  main     [kernel.kallsyms]      [k] __tlb_batch_free_encoded_pages
+            |
+            ---__tlb_batch_free_encoded_pages
+               free_pages_and_swap_cache
+               folios_put_refs
+
+     1.84%     0.00%  main     [kernel.kallsyms]      [k] free_pages_and_swap_cache
+            |
+            ---free_pages_and_swap_cache
+               folios_put_refs
+
+     0.97%     0.97%  main     [kernel.kallsyms]      [k] folio_batch_move_lru
+            |
+            ---_start
+               __libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
+               |          
+                --0.82%--__memset_zva64
+                          el0t_64_sync
+                          el0t_64_sync_handler
+                          el0_da
+                          do_mem_abort
+                          do_translation_fault
+                          do_page_fault
+                          handle_mm_fault
+                          __handle_mm_fault
+                          handle_pte_fault
+                          do_anonymous_page
+                          folio_add_lru_vma
+                          folio_add_lru
+                          __folio_batch_add_and_move
+                          folio_batch_move_lru
+
+     0.97%     0.00%  main     [kernel.kallsyms]      [k] folio_add_lru_vma
+            |
+            ---folio_add_lru_vma
+               folio_add_lru
+               __folio_batch_add_and_move
+               folio_batch_move_lru
+
+     0.97%     0.00%  main     [kernel.kallsyms]      [k] folio_add_lru
+            |
+            ---folio_add_lru
+               __folio_batch_add_and_move
+               folio_batch_move_lru
+
+     0.97%     0.00%  main     [kernel.kallsyms]      [k] __folio_batch_add_and_move
+            |
+            ---__folio_batch_add_and_move
+               folio_batch_move_lru
+
+     0.69%     0.00%  main     [kernel.kallsyms]      [k] unmap_vmas
+            |
+            ---unmap_vmas
+               unmap_single_vma.isra.0
+               unmap_page_range
+               zap_pmd_range.isra.0
+               zap_pte_range
+
+     0.69%     0.00%  main     [kernel.kallsyms]      [k] unmap_single_vma.isra.0
+            |
+            ---unmap_single_vma.isra.0
+               unmap_page_range
+               zap_pmd_range.isra.0
+               zap_pte_range
+
+     0.69%     0.00%  main     [kernel.kallsyms]      [k] unmap_page_range
+            |
+            ---unmap_page_range
+               zap_pmd_range.isra.0
+               zap_pte_range
+
+     0.69%     0.00%  main     [kernel.kallsyms]      [k] zap_pmd_range.isra.0
+            |
+            ---zap_pmd_range.isra.0
+               zap_pte_range
+
+     0.69%     0.00%  main     [kernel.kallsyms]      [k] zap_pte_range
+            |
+            ---zap_pte_range
+
+     0.65%     0.00%  main     [kernel.kallsyms]      [k] __mem_cgroup_charge
+            |
+            ---__mem_cgroup_charge
+
+     0.51%     0.00%  main     ld-linux-aarch64.so.1  [.] _start
+            |
+            ---_start
+
+     0.47%     0.00%  main     ld-linux-aarch64.so.1  [.] _dl_start
+     0.47%     0.00%  main     ld-linux-aarch64.so.1  [.] _dl_sysdep_start
+     0.47%     0.00%  main     ld-linux-aarch64.so.1  [.] dl_main
+     0.46%     0.23%  main     [kernel.kallsyms]      [k] zap_present_ptes
+     0.46%     0.46%  main     [kernel.kallsyms]      [k] free_frozen_page_commit
+     0.46%     0.00%  main     [kernel.kallsyms]      [k] free_unref_folios
+     0.46%     0.23%  main     [kernel.kallsyms]      [k] __pte_offset_map_lock
+     0.46%     0.46%  main     [kernel.kallsyms]      [k] __get_pfnblock_flags_mask.isra.0
+     0.46%     0.46%  main     [kernel.kallsyms]      [k] get_mem_cgroup_from_mm
+     0.43%     0.19%  main     [kernel.kallsyms]      [k] __lruvec_stat_mod_folio
+     0.42%     0.00%  main     main                   [.] std::vector<int, std::allocator<int> >::vector(unsigned long, std::allocator<int> const&)
+     0.40%     0.28%  main     ld-linux-aarch64.so.1  [.] do_lookup_x
+     0.40%     0.00%  main     ld-linux-aarch64.so.1  [.] _dl_relocate_object
+     0.40%     0.00%  main     ld-linux-aarch64.so.1  [.] _dl_lookup_symbol_x
+     0.23%     0.23%  main     [kernel.kallsyms]      [k] memcg_rstat_updated.part.0
+     0.23%     0.00%  main     [kernel.kallsyms]      [k] folio_remove_rmap_ptes
+     0.23%     0.00%  main     [kernel.kallsyms]      [k] mod_memcg_lruvec_state
+     0.23%     0.23%  main     [kernel.kallsyms]      [k] vm_normal_page
+     0.23%     0.23%  main     [kernel.kallsyms]      [k] ___pte_offset_map
+     0.23%     0.23%  main     [kernel.kallsyms]      [k] __rmqueue_pcplist
+     0.23%     0.00%  main     [kernel.kallsyms]      [k] rmqueue.isra.0
+     0.22%     0.22%  main     [kernel.kallsyms]      [k] do_notify_resume
+     0.22%     0.00%  main     [kernel.kallsyms]      [k] el0t_64_irq
+     0.22%     0.00%  main     [kernel.kallsyms]      [k] el0t_64_irq_handler
+     0.22%     0.00%  main     [kernel.kallsyms]      [k] __el0_irq_handler_common
+     0.22%     0.00%  main     [kernel.kallsyms]      [k] el0_interrupt
+     0.21%     0.21%  main     [kernel.kallsyms]      [k] percpu_counter_add_batch
+     0.20%     0.20%  main     [kernel.kallsyms]      [k] memcg1_commit_charge
+     0.20%     0.00%  main     [kernel.kallsyms]      [k] charge_memcg
+     0.19%     0.00%  main     [kernel.kallsyms]      [k] folio_add_new_anon_rmap
+     0.19%     0.00%  main     [kernel.kallsyms]      [k] __folio_mod_stat
+     0.19%     0.19%  main     [kernel.kallsyms]      [k] __set_ptes_anysz.constprop.0
+     0.11%     0.11%  main     ld-linux-aarch64.so.1  [.] strcmp
+     0.11%     0.00%  main     ld-linux-aarch64.so.1  [.] check_match
+     0.07%     0.00%  main     ld-linux-aarch64.so.1  [.] _dl_map_object_deps
+     0.07%     0.00%  main     ld-linux-aarch64.so.1  [.] _dl_catch_exception
+     0.07%     0.00%  main     ld-linux-aarch64.so.1  [.] openaux
+     0.07%     0.00%  main     ld-linux-aarch64.so.1  [.] _dl_map_object
+     0.07%     0.00%  main     ld-linux-aarch64.so.1  [.] _dl_map_object_from_fd
+     0.04%     0.04%  main     [kernel.kallsyms]      [k] folio_unlock
+     0.04%     0.00%  main     [kernel.kallsyms]      [k] el0_ia
+     0.04%     0.00%  main     [kernel.kallsyms]      [k] do_fault
+     0.04%     0.00%  main     [kernel.kallsyms]      [k] do_read_fault
+     0.02%     0.00%  main     [unknown]              [k] 0x0000ee028c89de0c
+     0.02%     0.00%  main     [kernel.kallsyms]      [k] __arm64_sys_execve
+     0.02%     0.00%  main     [kernel.kallsyms]      [k] do_execveat_common.isra.0
+     0.02%     0.00%  main     [kernel.kallsyms]      [k] bprm_execve
+     0.02%     0.00%  main     [kernel.kallsyms]      [k] bprm_execve.part.0
+     0.02%     0.00%  main     [kernel.kallsyms]      [k] exec_binprm
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] load_elf_binary
+     0.01%     0.01%  main     [kernel.kallsyms]      [k] prepend_path
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] elf_load
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] vm_mmap
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] vm_mmap_pgoff
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] do_mmap
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] mmap_region
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] __mmap_region
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] perf_event_mmap
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] perf_event_mmap_event
+     0.01%     0.00%  main     [kernel.kallsyms]      [k] d_path
+     0.00%     0.00%  main     [kernel.kallsyms]      [k] setup_arg_pages
+     0.00%     0.00%  main     [kernel.kallsyms]      [k] perf_output_begin
+     0.00%     0.00%  main     [kernel.kallsyms]      [k] begin_new_exec
+     0.00%     0.00%  main     [kernel.kallsyms]      [k] __set_task_comm
+     0.00%     0.00%  main     [kernel.kallsyms]      [k] perf_event_comm
+     0.00%     0.00%  main     [kernel.kallsyms]      [k] perf_event_comm_event.constprop.0
+     0.00%     0.00%  main     [kernel.kallsyms]      [k] perf_iterate_sb.constprop.0
+     0.00%     0.00%  main     [kernel.kallsyms]      [k] perf_iterate_ctx
+     0.00%     0.00%  main     [kernel.kallsyms]      [k] perf_event_comm_output
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] perf_event_enable_on_exec
+     0.00%     0.00%  perf-ex  [unknown]              [k] 0x0000ee028c89de0c
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] el0t_64_sync
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] el0t_64_sync_handler
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] el0_svc
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] do_el0_svc
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] el0_svc_common.constprop.0
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] invoke_syscall
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] __arm64_sys_execve
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] do_execveat_common.isra.0
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] bprm_execve
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] bprm_execve.part.0
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] exec_binprm
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] load_elf_binary
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] begin_new_exec
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]      [k] perf_event_exec
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

@@ -1,15 +1,19 @@
 CXX := g++
 CXXFLAGS := -std=c++20 -Wall -Wextra -pedantic -O2 -g
+CXXFLAGS_PERF := $(CXXFLAGS) -fno-omit-frame-pointer
 TARGET := main
 SOURCE := main.cpp
 
-.PHONY: all run test clean help
+.PHONY: all run perf test clean help
 
 all: $(SOURCE)
 	$(CXX) $(CXXFLAGS) $< -o $(TARGET)
 
 run: all
 	./$(TARGET)
+
+perf: $(SOURCE)
+	$(CXX) $(CXXFLAGS_PERF) $< -o $(TARGET)
 
 test: all
 	@test "$$(./$(TARGET))" = "6040578838"

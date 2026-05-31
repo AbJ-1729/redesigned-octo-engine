@@ -1,0 +1,39 @@
+Before fix
+
+2610456170
+
+ Performance counter stats for './main':
+
+         689160286      cycles                                                                  (37.68%)
+         795088653      instructions                     #    1.15  insn per cycle              (37.83%)
+         108710049      branches                                                                (37.89%)
+            550661      branch-misses                    #    0.51% of all branches             (24.74%)
+         207697929      cache-references                                                        (24.99%)
+          60050399      cache-misses                     #   28.91% of all cache refs           (25.00%)
+         208891919      L1-dcache-loads                                                         (24.69%)
+          57773438      L1-dcache-load-misses            #   27.66% of all L1-dcache accesses   (24.87%)
+
+       0.262224340 seconds time elapsed
+
+       0.248357000 seconds user
+       0.008940000 seconds sys
+
+After fix
+
+2610456170
+
+ Performance counter stats for './main':
+
+         284481961      cycles                                                                  (37.27%)
+         896814752      instructions                     #    3.15  insn per cycle              (38.19%)
+         123443815      branches                                                                (39.11%)
+            865466      branch-misses                    #    0.70% of all branches             (25.76%)
+         197680545      cache-references                                                        (24.89%)
+           9803214      cache-misses                     #    4.96% of all cache refs           (23.86%)
+         191350512      L1-dcache-loads                                                         (23.79%)
+           8399763      L1-dcache-load-misses            #    4.39% of all L1-dcache accesses   (24.40%)
+
+       0.108475024 seconds time elapsed
+
+       0.094763000 seconds user
+       0.011970000 seconds sys

@@ -1,0 +1,17 @@
+6040578838
+
+ Performance counter stats for './main':
+
+         117277910      cycles                                                                  (35.53%)
+         189938255      instructions                     #    1.62  insn per cycle              (37.77%)
+          24540515      branches                                                                (39.96%)
+            807638      branch-misses                    #    3.29% of all branches             (27.19%)
+          48206153      cache-references                                                        (26.81%)
+          19405769      cache-misses                     #   40.26% of all cache refs           (23.75%)
+          48330937      L1-dcache-loads                                                         (22.11%)
+          21278290      L1-dcache-load-misses            #   44.03% of all L1-dcache accesses   (22.41%)
+
+       0.045058549 seconds time elapsed
+
+       0.040538000 seconds user
+       0.003954000 seconds sys
